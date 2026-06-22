@@ -6,6 +6,7 @@
 <title>Contexto — Tinta y Rebeldía</title>
 <meta name="description" content="Qué fue el Cordobazo: contexto histórico antes de recorrer las columnas obreras y estudiantiles del 29 de mayo de 1969.">
 <link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/mapa-interactivo.css">
 <style>
   .hero-contexto {
     min-height: 70vh;
@@ -289,60 +290,96 @@
       <div class="mapa__intro">
         <p class="eyebrow">El mapa</p>
         <h2 style="margin-top: var(--r-1);">Elegí una columna para empezar a recorrer</h2>
-        <p>Cada columna parte de un punto distinto de la ciudad y confluye, hacia el mediodía, en la sede de la CGT. Elegí una para conocer su recorrido, su personaje y los recursos gráficos que documentaron su paso.</p>
+        <p>Cada columna parte de un punto distinto de la ciudad y confluye en la sede de la CGT. Pasá el mouse sobre una flecha para ver su recorrido. Hacé click para entrar.</p>
       </div>
 
-      <div class="columnas-grid">
+      <div class="mapa-contenedor" id="mapa-interactivo">
+        <img class="mapa-img" src="assets/img/mapa-cordoba.png" alt="Mapa de Córdoba con las columnas obreras del Cordobazo de 1969" draggable="false">
 
-        <a class="columna-card" href="columnas/ate/index.html" style="--col-card: var(--col-ate);">
-          <p class="columna-card__numero">Columna 01 — 10:00 hs</p>
-          <p class="columna-card__nombre">ATE</p>
-          <p class="columna-card__pj">Obrero técnico de IME</p>
-          <span class="columna-card__ir">Recorrer columna →</span>
-        </a>
+        <svg class="mapa-svg" viewBox="0 0 875 797" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+          <defs>
+            <filter id="filtro-rugoso" x="-5%" y="-5%" width="110%" height="110%">
+              <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise"/>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
+          </defs>
 
-        <a class="columna-card deshabilitada" href="#" style="--col-card: var(--col-smata-sr);">
-          <p class="columna-card__numero">Columna 02 — 10:00 hs</p>
-          <p class="columna-card__nombre">SMATA<br>Santa Isabel</p>
-          <p class="columna-card__pj">Obrero metalúrgico, IKA-Renault</p>
-          <span class="columna-card__ir">Recorrer columna</span>
-        </a>
+          <!-- COLUMNA ATE -->
+          <g class="col-grupo" data-col="ate" data-href="columnas/ate/index.html" aria-label="Columna ATE — clic para recorrer">
+            <path class="col-ruta" d="M 260 360 L 298 372 L 353 395 L 428 412 L 411 463 L 368 519 L 365 543 L 352 557 L 351 581 L 308 609 L 238 624 L 203 625 L 241 624 L 327 591 L 353 575 L 372 526 L 394 471"/>
+            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(141,691) rotate(200)"/>
+            <g class="col-tag" transform="translate(141,691)">
+              <rect rx="4" x="-8" y="20" width="158" height="40"/>
+              <text x="71" y="37" text-anchor="middle">COLUMNA ATE</text>
+              <text x="71" y="52" text-anchor="middle" class="col-tag-sub">(IME)</text>
+            </g>
+          </g>
 
-        <a class="columna-card deshabilitada" href="#" style="--col-card: var(--col-uom);">
-          <p class="columna-card__numero">Columna 03 — 10:30 hs</p>
-          <p class="columna-card__nombre">UOM</p>
-          <p class="columna-card__pj">Tornero metalúrgico</p>
-          <span class="columna-card__ir">Recorrer columna</span>
-        </a>
+          <!-- COLUMNA SMATA SANTA ISABEL -->
+          <g class="col-grupo" data-col="smata-sr" data-href="columnas/smata-santa-isabel/index.html" aria-label="Columna SMATA Santa Isabel — clic para recorrer">
+            <path class="col-ruta" d="M 497 368 L 483 398 L 459 450 L 439 506 L 412 554 L 404 577 L 398 619 L 374 659 L 371 678"/>
+            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(353,744) rotate(180)"/>
+            <g class="col-tag" transform="translate(353,744)">
+              <rect rx="4" x="-8" y="20" width="188" height="40"/>
+              <text x="86" y="37" text-anchor="middle">COLUMNA SMATA</text>
+              <text x="86" y="52" text-anchor="middle" class="col-tag-sub">(IKA-RENAULT)</text>
+            </g>
+          </g>
 
-        <a class="columna-card deshabilitada" href="#" style="--col-card: var(--col-lyf);">
-          <p class="columna-card__numero">Columna 04 — 10:30 hs</p>
-          <p class="columna-card__nombre">Luz y Fuerza</p>
-          <p class="columna-card__pj">Administrativa de EPEC</p>
-          <span class="columna-card__ir">Recorrer columna</span>
-        </a>
+          <!-- COLUMNA SMATA FERREYRA -->
+          <g class="col-grupo" data-col="smata-fp" data-href="columnas/smata-ferreyra/index.html" aria-label="Columna SMATA Ferreyra — clic para recorrer">
+            <path class="col-ruta" d="M 455 350 L 449 365 L 446 385 L 438 415 L 451 429 L 477 441 L 505 448 L 531 459 L 539 459 L 551 466 L 573 473 L 599 481 L 619 490"/>
+            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(728,511) rotate(280)"/>
+            <g class="col-tag" transform="translate(728,511)">
+              <rect rx="4" x="20" y="-21" width="178" height="40"/>
+              <text x="109" y="-4" text-anchor="middle">COLUMNA SMATA</text>
+              <text x="109" y="11" text-anchor="middle" class="col-tag-sub">(FIAT-PERKINS)</text>
+            </g>
+          </g>
 
-        <a class="columna-card deshabilitada" href="#" style="--col-card: var(--col-smata-fp);">
-          <p class="columna-card__numero">Columna 05 — 10:00 hs</p>
-          <p class="columna-card__nombre">SMATA<br>Ferreyra</p>
-          <p class="columna-card__pj">Técnico electromecánico, Perkins</p>
-          <span class="columna-card__ir">Recorrer columna</span>
-        </a>
+          <!-- COLUMNA UOM -->
+          <g class="col-grupo" data-col="uom" data-href="columnas/uom/index.html" aria-label="Columna UOM — clic para recorrer">
+            <path class="col-ruta" d="M 456 264 L 494 275 L 531 292 L 555 304 L 566 305 L 598 321 L 629 332 L 456 264 L 451 273 L 437 315 L 430 349"/>
+            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(804,350) rotate(280)"/>
+            <g class="col-tag" transform="translate(804,350)">
+              <rect rx="4" x="20" y="-14" width="148" height="28"/>
+              <text x="94" y="4" text-anchor="middle">COLUMNA UOM</text>
+            </g>
+          </g>
 
-        <a class="columna-card deshabilitada" href="#" style="--col-card: var(--col-smata-ip);">
-          <p class="columna-card__numero">Columna 06 — 10:15 hs</p>
-          <p class="columna-card__nombre">SMATA<br>Perdriel</p>
-          <p class="columna-card__pj">Especialista en matricería</p>
-          <span class="columna-card__ir">Recorrer columna</span>
-        </a>
+          <!-- COLUMNA LUZ Y FUERZA -->
+          <g class="col-grupo" data-col="lyf" data-href="columnas/luz-y-fuerza/index.html" aria-label="Columna Luz y Fuerza — clic para recorrer">
+            <path class="col-ruta" d="M 433 125 L 464 135 L 524 156 L 583 179 L 561 236 L 533 290 L 526 315 L 428 277 L 413 272 L 382 245 L 407 199 L 421 156 L 427 132 L 419 168 L 392 235 L 394 263 L 414 271"/>
+            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(470,291) rotate(220)"/>
+            <g class="col-tag" transform="translate(470,291)">
+              <rect rx="4" x="-180" y="-21" width="158" height="40"/>
+              <text x="-101" y="-4" text-anchor="middle">COLUMNA LUZ</text>
+              <text x="-101" y="11" text-anchor="middle">Y FUERZA</text>
+            </g>
+          </g>
 
-        <a class="columna-card deshabilitada" href="#" style="--col-card: var(--col-clinicas);">
-          <p class="columna-card__numero">Columna 07 — 13:30 hs</p>
-          <p class="columna-card__nombre">Clínicas</p>
-          <p class="columna-card__pj">Estudiante universitario/a, UNC</p>
-          <span class="columna-card__ir">Recorrer columna</span>
-        </a>
+          <!-- COLUMNA SMATA PERDRIEL -->
+          <g class="col-grupo" data-col="smata-ip" data-href="columnas/smata-perdriel/index.html" aria-label="Columna SMATA Perdriel — clic para recorrer">
+            <path class="col-ruta" d="M 353 87 L 360 97 L 369 114 L 360 133 L 356 144 L 339 187 L 360 192 L 394 204 L 441 225 L 497 244 L 533 273 L 518 313 L 406 208 L 377 202 L 343 170"/>
+            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(321,31) rotate(180)"/>
+            <g class="col-tag" transform="translate(321,31)">
+              <rect rx="4" x="-8" y="-54" width="178" height="40"/>
+              <text x="81" y="-37" text-anchor="middle">COLUMNA SMATA</text>
+              <text x="81" y="-22" text-anchor="middle" class="col-tag-sub">(IKA-PERDRIEL)</text>
+            </g>
+          </g>
 
+          <!-- COLUMNA CLÍNICAS -->
+          <g class="col-grupo" data-col="clinicas" data-href="columnas/clinicas/index.html" aria-label="Columna Clínicas — clic para recorrer">
+            <path class="col-ruta" d="M 283 115 L 301 122 L 345 148 L 398 165 L 410 174 L 424 178 L 447 192 L 476 204 L 545 229 L 606 271 L 584 330 L 605 273 L 346 147 L 322 131 L 287 118"/>
+            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(90,140) rotate(300)"/>
+            <g class="col-tag" transform="translate(90,140)">
+              <rect rx="4" x="-198" y="-21" width="180" height="40"/>
+              <text x="-108" y="-4" text-anchor="middle">COLUMNA CLÍNICAS</text>
+              <text x="-108" y="11" text-anchor="middle" class="col-tag-sub">(UNC)</text>
+            </g>
+          </g>
+        </svg>
       </div>
 
       <div class="actividad-cta">
@@ -357,5 +394,7 @@
 </main>
 
 <script src="assets/js/scroll-reveal.js"></script>
+<script src="assets/js/mapa-interactivo.js"></script>
 </body>
+
 </html>
