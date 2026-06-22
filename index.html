@@ -23,20 +23,12 @@
   position: absolute;
   inset: 0;
   z-index: -2;
-  
   /* 1. Mantenemos el degradado rojo sutil y añadimos la imagen detrás */
   background: 
     radial-gradient(ellipse at 50% 20%, rgba(110, 20, 35, 0.25), transparent 60%),
     url("/assets/img/fondo-landing-page.jpg") no-repeat center center;
-  
-  /* 2. Hace que la imagen cubra toda la pantalla sin deformarse */
-  background-size: cover; 
-  
-  /* 3. Color de respaldo por si la imagen tarda en cargar */
-  background-color: var(--negro); 
-  
-  /* Opcional: si la imagen es muy brillante y querés que sea sutil como las líneas */
-  /* opacity: 0.4; */
+    background-size: cover; 
+    background-color: var(--negro); 
 }
 
 
