@@ -1,5 +1,6 @@
-// Tinta y Rebeldía — Mapa interactivo de columnas
-// Maneja hover de escritorio y tap en touch, y navega al hacer click.
+// ============================================================
+// MAPA INTERACTIVO — pegá esto en tu archivo JS del mapa
+// ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
   const grupos = document.querySelectorAll('.col-grupo');
@@ -7,11 +8,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const esTouch = window.matchMedia('(hover: none)').matches;
 
+  // Calcula el largo real de cada ruta y lo asigna como dasharray/dashoffset
+  // para que la animación de dibujado sea precisa sin importar el zoom
+  grupos.forEach((grupo) => {
+    const ruta = grupo.querySelector('.col-ruta');
+    if (ruta) {
+      const largo = ruta.getTotalLength();
+      ruta.style.strokeDasharray = largo;
+      ruta.style.strokeDashoffset = largo;
+    }
+  });
+
   grupos.forEach((grupo) => {
     const href = grupo.getAttribute('data-href');
 
     if (esTouch) {
-      // En touch: primer tap activa el hover, segundo tap navega
+      // Touch: primer tap activa, segundo tap navega
       grupo.addEventListener('click', () => {
         const yaActivo = grupo.classList.contains('activo');
         grupos.forEach((g) => g.classList.remove('activo'));
@@ -22,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     } else {
-      // En desktop: click navega directamente
+      // Desktop: click navega directo
       if (href) {
         grupo.addEventListener('click', () => {
           window.location.href = href;
