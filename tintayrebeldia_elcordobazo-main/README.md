@@ -1,1 +1,0 @@
-# tintayrebeldia_elcordobazo
