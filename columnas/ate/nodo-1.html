@@ -29,7 +29,17 @@
 
 <main id="contenido">
   <section class="pantalla">
-    <div class="pantalla__fondo" style="background-image: url('https://picsum.photos/seed/ate-nodo1-fondo/1600/1000?grayscale');"></div>
+    <!-- El contenedor del fondo ahora aloja el iframe interactivo -->
+    <div class="pantalla__fondo">
+        <iframe 
+            src="https://h5p.com" 
+            aria-label="columna ate nodo 1" 
+            allowfullscreen="allowfullscreen" 
+            allow="autoplay *; geolocation *; microphone *; camera *; midi *; encrypted-media *; gyroscope *; accelerometer *">
+        </iframe>
+    </div>
+<!-- Acordate de incluir el script al final de tu HTML -->
+<script src="https://h5p.com" charset="UTF-8"></script>
 
     <div class="pantalla__contenido">
       <p class="eyebrow pantalla__eyebrow">Nodo 1</p>
