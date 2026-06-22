@@ -1,0 +1,123 @@
+/* ============================================================
+   TINTA Y REBELDÍA — Mapa interactivo de columnas
+   ============================================================ */
+
+/* Variables de color por columna — sobrescriben el bordo neutro al hacer hover */
+[data-col="ate"]      { --col-hover: var(--col-ate); }
+[data-col="smata-sr"] { --col-hover: var(--col-smata-sr); }
+[data-col="smata-fp"] { --col-hover: var(--col-smata-fp); }
+[data-col="uom"]      { --col-hover: var(--col-uom); }
+[data-col="lyf"]      { --col-hover: var(--col-lyf); }
+[data-col="smata-ip"] { --col-hover: var(--col-smata-ip); }
+[data-col="clinicas"] { --col-hover: var(--col-clinicas); }
+
+/* ---------- Contenedor del mapa ---------- */
+.mapa-contenedor {
+  position: relative;
+  width: 100%;
+  user-select: none;
+}
+
+.mapa-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+.mapa-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* ---------- Grupos interactivos (un por columna) ---------- */
+.col-grupo {
+  cursor: pointer;
+  outline: none;
+}
+
+/* ---------- Triángulos — estado neutro (bordo) ---------- */
+.col-triangulo {
+  fill: var(--bordo);
+  transition: fill var(--transicion), transform 200ms ease, filter 200ms ease;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.6));
+}
+
+/* ---------- Líneas de recorrido — ocultas por defecto ---------- */
+.col-ruta {
+  fill: none;
+  stroke: var(--col-hover, var(--bordo));
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  transition: stroke-dashoffset 600ms ease, opacity 300ms ease;
+  opacity: 0;
+  filter: url(#filtro-rugoso);
+}
+
+/* ---------- Tags de nombre — ocultos por defecto ---------- */
+.col-tag {
+  opacity: 0;
+  transition: opacity 200ms ease 300ms;
+  pointer-events: none;
+}
+
+.col-tag rect {
+  fill: var(--col-hover, var(--bordo));
+  stroke: none;
+}
+
+.col-tag text {
+  fill: var(--hueso);
+  font-family: 'Rubik Dirt', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.col-tag-sub {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: 9px !important;
+  letter-spacing: 0.06em !important;
+  opacity: 0.85;
+}
+
+/* ---------- Estado hover/activo ---------- */
+.col-grupo:hover .col-triangulo,
+.col-grupo:focus .col-triangulo,
+.col-grupo.activo .col-triangulo {
+  fill: var(--col-hover, var(--bordo-claro));
+  filter: drop-shadow(0 0 6px var(--col-hover, var(--bordo-claro)));
+}
+
+.col-grupo:hover .col-ruta,
+.col-grupo:focus .col-ruta,
+.col-grupo.activo .col-ruta {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+
+.col-grupo:hover .col-tag,
+.col-grupo:focus .col-tag,
+.col-grupo.activo .col-tag {
+  opacity: 1;
+}
+
+/* ---------- Reducir movimiento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .col-ruta { transition: opacity 300ms ease; stroke-dasharray: none; stroke-dashoffset: 0; }
+  .col-triangulo { transition: fill 150ms ease; }
+  .col-tag { transition: opacity 150ms ease; }
+}
+
+/* ---------- Touch: activar con tap en vez de hover ---------- */
+@media (hover: none) {
+  .col-grupo.activo .col-triangulo { fill: var(--col-hover, var(--bordo-claro)); }
+  .col-grupo.activo .col-ruta { stroke-dashoffset: 0; opacity: 1; }
+  .col-grupo.activo .col-tag { opacity: 1; }
+}
