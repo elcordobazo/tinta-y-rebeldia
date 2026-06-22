@@ -296,90 +296,270 @@
       <div class="mapa-contenedor" id="mapa-interactivo">
         <img class="mapa-img" src="assets/img/mapa-cordoba.png" alt="Mapa de Córdoba con las columnas obreras del Cordobazo de 1969" draggable="false">
 
-        <svg class="mapa-svg" viewBox="0 0 875 797" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <defs>
-            <filter id="filtro-rugoso" x="-5%" y="-5%" width="110%" height="110%">
-              <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise"/>
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
-            </filter>
-          </defs>
+        <!--
+  FRAGMENTO HTML — reemplazá el <svg class="mapa-svg"> existente con este.
+  El viewBox queda igual: "0 0 875 797"
 
-          <!-- COLUMNA ATE -->
-          <g class="col-grupo" data-col="ate" data-href="columnas/ate/index.html" aria-label="Columna ATE — clic para recorrer">
-            <path class="col-ruta" d="M 260 360 L 298 372 L 353 395 L 428 412 L 411 463 L 368 519 L 365 543 L 352 557 L 351 581 L 308 609 L 238 624 L 203 625 L 241 624 L 327 591 L 353 575 L 372 526 L 394 471"/>
-            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(141,691) rotate(200)"/>
-            <g class="col-tag" transform="translate(141,691)">
-              <rect rx="4" x="-8" y="20" width="158" height="40"/>
-              <text x="71" y="37" text-anchor="middle">COLUMNA ATE</text>
-              <text x="71" y="52" text-anchor="middle" class="col-tag-sub">(IME)</text>
-            </g>
-          </g>
+  Escala aplicada desde los SVG de Illustrator (viewBox 1080x1080):
+    x → x * (875/1080) = x * 0.8102
+    y → y * (797/1080) = y * 0.7380
+-->
 
-          <!-- COLUMNA SMATA SANTA ISABEL -->
-          <g class="col-grupo" data-col="smata-sr" data-href="columnas/smata-santa-isabel/index.html" aria-label="Columna SMATA Santa Isabel — clic para recorrer">
-            <path class="col-ruta" d="M 497 368 L 483 398 L 459 450 L 439 506 L 412 554 L 404 577 L 398 619 L 374 659 L 371 678"/>
-            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(353,744) rotate(180)"/>
-            <g class="col-tag" transform="translate(353,744)">
-              <rect rx="4" x="-8" y="20" width="188" height="40"/>
-              <text x="86" y="37" text-anchor="middle">COLUMNA SMATA</text>
-              <text x="86" y="52" text-anchor="middle" class="col-tag-sub">(IKA-RENAULT)</text>
-            </g>
-          </g>
+<svg class="mapa-svg" viewBox="0 0 875 797" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+  <defs>
+    <filter id="filtro-rugoso" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
 
-          <!-- COLUMNA SMATA FERREYRA -->
-          <g class="col-grupo" data-col="smata-fp" data-href="columnas/smata-ferreyra/index.html" aria-label="Columna SMATA Ferreyra — clic para recorrer">
-            <path class="col-ruta" d="M 455 350 L 449 365 L 446 385 L 438 415 L 451 429 L 477 441 L 505 448 L 531 459 L 539 459 L 551 466 L 573 473 L 599 481 L 619 490"/>
-            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(728,511) rotate(280)"/>
-            <g class="col-tag" transform="translate(728,511)">
-              <rect rx="4" x="20" y="-21" width="178" height="40"/>
-              <text x="109" y="-4" text-anchor="middle">COLUMNA SMATA</text>
-              <text x="109" y="11" text-anchor="middle" class="col-tag-sub">(FIAT-PERKINS)</text>
-            </g>
-          </g>
+  <!-- ══════════════════════════════
+       COLUMNA ATE  |  color: #614e3d
+  ══════════════════════════════ -->
+  <g class="col-grupo" data-col="ate" data-href="columnas/ate/index.html"
+     aria-label="Columna ATE — clic para recorrer">
 
-          <!-- COLUMNA UOM -->
-          <g class="col-grupo" data-col="uom" data-href="columnas/uom/index.html" aria-label="Columna UOM — clic para recorrer">
-            <path class="col-ruta" d="M 456 264 L 494 275 L 531 292 L 555 304 L 566 305 L 598 321 L 629 332 L 456 264 L 451 273 L 437 315 L 430 349"/>
-            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(804,350) rotate(280)"/>
-            <g class="col-tag" transform="translate(804,350)">
-              <rect rx="4" x="20" y="-14" width="148" height="28"/>
-              <text x="94" y="4" text-anchor="middle">COLUMNA UOM</text>
-            </g>
-          </g>
+    <path class="col-ruta" d="
+      M 215.7 572.2
+      C 244.8 557.9 271.6 559.2 296.4 554.5
+      C 349.8 541.8 348.0 476.9 373.1 439.8
+      C 378.2 431.9 383.8 424.6 391.3 419.6
+      C 396.4 415.9 401.8 412.8 406.0 408.8
+      C 410.1 404.7 419.4 395.3 418.5 389.5
+      L 420.3 391.3 L 411.3 387.8
+      C 390.9 380.0 369.8 372.8 349.2 365.6
+      C 325.0 357.5 299.7 349.0 275.5 340.5
+      C 293.9 346.4 312.5 351.9 331.1 357.2
+      C 352.3 363.5 374.2 369.9 395.1 376.2
+      C 403.3 378.8 415.7 382.9 424.9 386.1
+      C 428.0 387.3 427.1 393.0 426.5 395.2
+      C 424.3 401.6 419.6 407.0 414.9 412.4
+      C 411.6 416.0 407.9 419.5 403.9 422.0
+      C 398.6 425.3 393.6 428.6 389.3 433.2
+      C 376.1 446.5 369.9 463.7 363.2 481.4
+      C 346.5 524.2 329.9 543.7 280.9 549.9
+      C 255.6 552.7 229.1 551.6 206.3 563.9
+    "/>
 
-          <!-- COLUMNA LUZ Y FUERZA -->
-          <g class="col-grupo" data-col="lyf" data-href="columnas/luz-y-fuerza/index.html" aria-label="Columna Luz y Fuerza — clic para recorrer">
-            <path class="col-ruta" d="M 433 125 L 464 135 L 524 156 L 583 179 L 561 236 L 533 290 L 526 315 L 428 277 L 413 272 L 382 245 L 407 199 L 421 156 L 427 132 L 419 168 L 392 235 L 394 263 L 414 271"/>
-            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(470,291) rotate(220)"/>
-            <g class="col-tag" transform="translate(470,291)">
-              <rect rx="4" x="-180" y="-21" width="158" height="40"/>
-              <text x="-101" y="-4" text-anchor="middle">COLUMNA LUZ</text>
-              <text x="-101" y="11" text-anchor="middle">Y FUERZA</text>
-            </g>
-          </g>
+    <polygon class="col-triangulo"
+      points="0,-13 11,9 -11,9"
+      transform="translate(177,648) rotate(200)"/>
 
-          <!-- COLUMNA SMATA PERDRIEL -->
-          <g class="col-grupo" data-col="smata-ip" data-href="columnas/smata-perdriel/index.html" aria-label="Columna SMATA Perdriel — clic para recorrer">
-            <path class="col-ruta" d="M 353 87 L 360 97 L 369 114 L 360 133 L 356 144 L 339 187 L 360 192 L 394 204 L 441 225 L 497 244 L 533 273 L 518 313 L 406 208 L 377 202 L 343 170"/>
-            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(321,31) rotate(180)"/>
-            <g class="col-tag" transform="translate(321,31)">
-              <rect rx="4" x="-8" y="-54" width="178" height="40"/>
-              <text x="81" y="-37" text-anchor="middle">COLUMNA SMATA</text>
-              <text x="81" y="-22" text-anchor="middle" class="col-tag-sub">(IKA-PERDRIEL)</text>
-            </g>
-          </g>
+    <g class="col-tag" transform="translate(177,648)">
+      <rect rx="4" x="-8" y="20" width="158" height="40"/>
+      <text x="71" y="37" text-anchor="middle">COLUMNA ATE</text>
+      <text x="71" y="52" text-anchor="middle" class="col-tag-sub">(IME)</text>
+    </g>
+  </g>
 
-          <!-- COLUMNA CLÍNICAS -->
-          <g class="col-grupo" data-col="clinicas" data-href="columnas/clinicas/index.html" aria-label="Columna Clínicas — clic para recorrer">
-            <path class="col-ruta" d="M 283 115 L 301 122 L 345 148 L 398 165 L 410 174 L 424 178 L 447 192 L 476 204 L 545 229 L 606 271 L 584 330 L 605 273 L 346 147 L 322 131 L 287 118"/>
-            <polygon class="col-triangulo" points="0,-13 11,9 -11,9" transform="translate(90,140) rotate(300)"/>
-            <g class="col-tag" transform="translate(90,140)">
-              <rect rx="4" x="-198" y="-21" width="180" height="40"/>
-              <text x="-108" y="-4" text-anchor="middle">COLUMNA CLÍNICAS</text>
-              <text x="-108" y="11" text-anchor="middle" class="col-tag-sub">(UNC)</text>
-            </g>
-          </g>
-        </svg>
+  <!-- ══════════════════════════════
+       COLUMNA SMATA IKA-RENAULT  |  color: #b3242c
+  ══════════════════════════════ -->
+  <g class="col-grupo" data-col="smata-sr" data-href="columnas/smata-santa-isabel/index.html"
+     aria-label="Columna SMATA Santa Isabel — clic para recorrer">
+
+    <path class="col-ruta" d="
+      M 374.2 613.8
+      C 396.9 544.3 430.3 476.2 469.7 411.1
+    "/>
+
+    <polygon class="col-triangulo"
+      points="0,-13 11,9 -11,9"
+      transform="translate(345,690) rotate(180)"/>
+
+    <g class="col-tag" transform="translate(345,690)">
+      <rect rx="4" x="-8" y="20" width="188" height="40"/>
+      <text x="86" y="37" text-anchor="middle">COLUMNA SMATA</text>
+      <text x="86" y="52" text-anchor="middle" class="col-tag-sub">(IKA-RENAULT)</text>
+    </g>
+  </g>
+
+  <!-- ══════════════════════════════
+       COLUMNA SMATA FERREYRA  |  color: #611119
+  ══════════════════════════════ -->
+  <g class="col-grupo" data-col="smata-fp" data-href="columnas/smata-ferreyra/index.html"
+     aria-label="Columna SMATA Ferreyra — clic para recorrer">
+
+    <path class="col-ruta" d="
+      M 621.9 465.4
+      C 599.7 461.2 577.3 456.5 555.6 450.1
+      C 538.0 444.9 521.2 437.5 503.7 432.1
+      C 487.2 426.8 469.1 423.2 451.3 425.4
+      L 448.2 427.9
+      C 450.5 423.3 452.7 418.6 454.7 413.9
+      C 459.0 404.0 462.8 393.8 466.0 383.5
+      C 467.3 379.1 468.9 374.5 470.1 370.2
+      L 471.3 366.6
+      C 470.5 371.5 469.5 376.4 468.3 381.1
+      C 464.6 396.8 459.4 412.0 453.3 426.8
+      L 450.2 423.2
+      C 463.3 420.8 476.7 421.7 489.8 424.7
+      C 513.4 430.3 534.8 441.3 557.2 449.4
+      C 578.3 456.8 600.4 462.5 622.4 468.5
+    "/>
+
+    <polygon class="col-triangulo"
+      points="0,-13 11,9 -11,9"
+      transform="translate(664,490) rotate(280)"/>
+
+    <g class="col-tag" transform="translate(664,490)">
+      <rect rx="4" x="20" y="-21" width="178" height="40"/>
+      <text x="109" y="-4" text-anchor="middle">COLUMNA SMATA</text>
+      <text x="109" y="11" text-anchor="middle" class="col-tag-sub">(FIAT-PERKINS)</text>
+    </g>
+  </g>
+
+  <!-- ══════════════════════════════
+       COLUMNA UOM  |  color: #16213e
+  ══════════════════════════════ -->
+  <g class="col-grupo" data-col="uom" data-href="columnas/uom/index.html"
+     aria-label="Columna UOM — clic para recorrer">
+
+    <path class="col-ruta" d="
+      M 678.7 350.6
+      C 635.5 338.3 590.7 322.5 547.2 304.9
+      C 513.4 291.0 479.8 276.1 446.5 262.1
+      L 450.3 261.1
+      C 442.7 271.4 436.5 283.5 431.3 295.3
+      C 425.9 307.5 421.6 320.3 418.3 333.5
+      C 419.7 319.8 423.0 306.2 428.0 293.5
+      C 433.0 280.9 439.8 268.6 447.9 257.8
+      C 448.7 256.5 450.4 256.1 451.7 256.7
+      C 465.4 263.0 479.2 269.2 493.1 275.4
+      C 533.7 293.2 576.3 311.9 617.4 330.5
+    "/>
+
+    <polygon class="col-triangulo"
+      points="0,-13 11,9 -11,9"
+      transform="translate(724,373) rotate(280)"/>
+
+    <g class="col-tag" transform="translate(724,373)">
+      <rect rx="4" x="20" y="-14" width="148" height="28"/>
+      <text x="94" y="4" text-anchor="middle">COLUMNA UOM</text>
+    </g>
+  </g>
+
+  <!-- ══════════════════════════════
+       COLUMNA LUZ Y FUERZA  |  color: #c97a1f
+  ══════════════════════════════ -->
+  <g class="col-grupo" data-col="lyf" data-href="columnas/luz-y-fuerza/index.html"
+     aria-label="Columna Luz y Fuerza — clic para recorrer">
+
+    <path class="col-ruta" d="
+      M 428.9 309.0
+      C 415.2 305.4 401.7 301.2 388.7 295.8
+      C 385.2 294.6 380.3 291.7 380.1 287.0
+      C 379.8 283.3 381.8 279.2 382.9 275.6
+      L 389.7 257.4
+      C 396.5 239.6 409.3 203.5 416.6 184.6
+      C 417.2 183.0 419.1 182.1 420.8 182.7
+      C 450.1 192.2 479.2 202.7 508.0 213.9
+      C 517.6 217.6 527.2 221.5 536.7 225.5
+      C 538.0 226.1 538.7 227.5 538.5 228.9
+      C 536.0 240.5 531.4 251.5 526.6 262.1
+      C 519.5 278.0 511.8 295.3 504.6 311.2
+      C 497.4 327.0 489.7 344.3 482.3 360.1
+      C 488.5 344.7 495.6 326.6 502.6 310.6
+      C 509.5 294.7 517.2 277.2 523.5 261.0
+      C 528.0 249.7 532.4 238.1 534.3 226.5
+      L 536.2 229.9
+      C 498.8 214.3 460.9 199.7 422.9 186.0
+      L 427.1 184.0
+      C 419.8 202.9 408.8 235.6 401.7 254.1
+      L 393.5 272.6
+      C 392.7 274.8 390.4 279.1 390.5 281.7
+      C 390.6 285.0 393.7 286.5 396.4 287.8
+      C 409.1 293.9 422.4 299.1 436.0 303.6
+    "/>
+
+    <polygon class="col-triangulo"
+      points="0,-13 11,9 -11,9"
+      transform="translate(458,332) rotate(220)"/>
+
+    <g class="col-tag" transform="translate(458,332)">
+      <rect rx="4" x="-180" y="-21" width="158" height="40"/>
+      <text x="-101" y="-4" text-anchor="middle">COLUMNA LUZ</text>
+      <text x="-101" y="11" text-anchor="middle">Y FUERZA</text>
+    </g>
+  </g>
+
+  <!-- ══════════════════════════════
+       COLUMNA SMATA PERDRIEL  |  color: #612f95
+  ══════════════════════════════ -->
+  <g class="col-grupo" data-col="smata-ip" data-href="columnas/smata-perdriel/index.html"
+     aria-label="Columna SMATA Perdriel — clic para recorrer">
+
+    <path class="col-ruta" d="
+      M 356.1 153.4
+      C 365.7 159.7 369.4 172.0 370.3 183.2
+      C 371.6 194.9 371.2 206.8 369.1 218.4
+      C 367.7 226.8 359.3 240.6 368.0 247.5
+      C 372.0 250.2 377.0 251.2 382.0 252.7
+      C 384.9 253.4 389.3 255.1 392.3 256.2
+      C 418.2 265.3 445.2 276.4 471.1 286.9
+      C 477.5 289.4 495.0 296.5 501.0 299.0
+      C 506.3 301.3 512.4 302.6 510.8 310.3
+      C 510.3 312.6 508.6 316.4 507.8 318.7
+      C 499.0 340.4 489.5 363.5 480.1 385.4
+      C 487.9 360.7 497.2 334.5 505.6 309.5
+      C 506.1 307.6 504.8 307.3 503.3 306.7
+      L 498.3 304.9 L 488.3 301.3
+      C 455.6 289.2 421.0 276.4 388.0 263.6
+      L 383.1 261.7
+      C 378.1 259.8 372.8 258.7 367.6 256.4
+      C 358.9 253.1 355.0 246.0 356.6 237.0
+      C 357.8 230.3 360.8 224.4 362.1 217.7
+      C 364.3 207.4 365.1 196.7 364.6 186.3
+      C 364.4 176.1 361.8 165.5 354.0 159.3
+    "/>
+
+    <polygon class="col-triangulo"
+      points="0,-13 11,9 -11,9"
+      transform="translate(337,23) rotate(180)"/>
+
+    <g class="col-tag" transform="translate(337,23)">
+      <rect rx="4" x="-8" y="-54" width="178" height="40"/>
+      <text x="81" y="-37" text-anchor="middle">COLUMNA SMATA</text>
+      <text x="81" y="-22" text-anchor="middle" class="col-tag-sub">(IKA-PERDRIEL)</text>
+    </g>
+  </g>
+
+  <!-- ══════════════════════════════
+       COLUMNA CLÍNICAS  |  color: #2f6b3a
+  ══════════════════════════════ -->
+  <g class="col-grupo" data-col="clinicas" data-href="columnas/clinicas/index.html"
+     aria-label="Columna Clínicas — clic para recorrer">
+
+    <path class="col-ruta" d="
+      M 177.1 189.2
+      C 220.9 191.8 262.6 205.5 303.6 219.2
+      C 342.6 232.5 384.5 245.4 423.0 260.0
+      C 442.2 267.3 461.2 275.5 479.6 285.1
+      L 485.6 288.5
+      C 488.6 290.2 492.4 292.3 494.3 295.5
+      C 498.0 301.9 493.7 309.2 491.2 315.2
+      C 481.5 336.5 471.5 358.3 461.7 379.7
+      C 469.8 358.5 478.4 336.2 487.0 315.2
+      C 488.5 310.8 490.9 305.9 490.4 301.7
+      C 489.7 297.2 485.5 295.2 482.0 293.2
+      L 476.0 290.0
+      C 457.7 280.3 438.5 272.0 419.2 264.5
+      C 369.5 245.5 312.2 228.4 263.0 210.4
+      C 228.8 198.5 194.5 186.8 158.4 181.6
+    "/>
+
+    <polygon class="col-triangulo"
+      points="0,-13 11,9 -11,9"
+      transform="translate(90,140) rotate(300)"/>
+
+    <g class="col-tag" transform="translate(90,140)">
+      <rect rx="4" x="-198" y="-21" width="180" height="40"/>
+      <text x="-108" y="-4" text-anchor="middle">COLUMNA CLÍNICAS</text>
+      <text x="-108" y="11" text-anchor="middle" class="col-tag-sub">(UNC)</text>
+    </g>
+  </g>
+
+</svg>
       </div>
 
       <div class="actividad-cta">
