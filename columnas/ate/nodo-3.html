@@ -15,7 +15,11 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: flex-end;
+  }
+
+  .pantalla__contenido {
+    margin-top: 0;
   }
   .pantalla__titulo {
     margin-top: 0.35rem;
@@ -64,6 +68,11 @@
     gap: var(--r-4);
     align-items: start;
     margin-top: var(--r-3);
+  }
+  .pantalla__hero > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .pj-presentacion {
     margin-top: 0;
