@@ -9,6 +9,77 @@
 <link rel="stylesheet" href="../../assets/css/columna.css">
 <style>
   :root { --col-acento: var(--col-ate); }
+  .pantalla__titulo {
+    margin-top: 0.35rem;
+  }
+  .pantalla__meta {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--r-3);
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--col-acento);
+    border-radius: 1.5rem;
+    background: rgba(92, 74, 58, 0.12);
+  }
+  .pantalla__meta span {
+    color: var(--hueso);
+  }
+  .pantalla__meta .meta-hora {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 5rem;
+    min-height: 5rem;
+    padding: 0.8rem;
+    border-radius: 50%;
+    background: var(--col-acento);
+    color: var(--hueso);
+    font-weight: 700;
+    text-align: center;
+  }
+  .pantalla__hero {
+    display: grid;
+    grid-template-columns: minmax(180px, 280px) minmax(260px, 1fr);
+    gap: var(--r-4);
+    align-items: start;
+    margin-top: var(--r-4);
+  }
+  .pj-presentacion {
+    display: grid;
+    grid-template-columns: minmax(180px, 240px) 1fr;
+    gap: var(--r-4);
+    align-items: start;
+    border-left: 3px solid var(--col-acento, var(--bordo));
+    padding-left: var(--r-3);
+  }
+  .pj-presentacion__imagen {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 1rem;
+    background: rgba(10,9,8,0.2);
+  }
+  .pj-presentacion__descripcion {
+    margin-top: 0;
+    color: var(--hueso-op);
+    line-height: 1.6;
+  }
+  .acciones-nodo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--r-3);
+    width: 100%;
+    max-width: 340px;
+    margin-left: auto;
+  }
+  .acciones-nodo .boton-flotante {
+    width: 100%;
+    justify-content: center;
+  }
 </style>
 </head>
 <body>
@@ -33,20 +104,33 @@
     <div class="pantalla__contenido">
       <p class="eyebrow pantalla__eyebrow">Nodo 1</p>
       <h1 class="pantalla__titulo">El abandono de los talleres</h1>
-      <p class="pantalla__meta">
-        <span>Predio IME, Av. J. A. Roca</span>
-        <span><strong>10:00 — 10:30 hs</strong></span>
-      </p>
+      <div class="pantalla__hero">
+        <div>
+          <p class="pantalla__meta">
+            <span>Predio IME, Av. J. A. Roca</span>
+            <span class="meta-hora"><strong>10:00 — 10:30 hs</strong></span>
+          </p>
 
-      <div class="acciones-nodo">
-        <button class="boton-flotante" data-abre-modal="modal-relato">
-          <svg class="boton-flotante__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h8M8 14h5M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z"/></svg>
-          Escuchar el relato
-        </button>
-        <button class="boton-flotante" data-abre-modal="modal-recurso">
-          <svg class="boton-flotante__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          Ver documento histórico de la cuadra
-        </button>
+          <div class="pj-presentacion">
+            <img class="pj-presentacion__imagen" src="../../assets/img/mapa-cordoba.png" alt="Retrato del personaje guía">
+            <div>
+              <p class="pj-card__rotulo">Tu guía en esta columna</p>
+              <p class="pj-card__nombre">Obrero técnico, 25 años</p>
+              <p class="pj-presentacion__descripcion">Trabaja en las Industrias Mecánicas del Estado. Esta mañana del 29 de mayo de 1969, apaga su máquina y sale a la calle junto a sus compañeros de taller.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="acciones-nodo">
+          <button class="boton-flotante" data-abre-modal="modal-relato">
+            <svg class="boton-flotante__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h8M8 14h5M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z"/></svg>
+            Escuchar el relato
+          </button>
+          <button class="boton-flotante" data-abre-modal="modal-recurso">
+            <svg class="boton-flotante__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h8M8 14h5M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z"/></svg>
+            Ver archivo contextual
+          </button>
+        </div>
       </div>
     </div>
   </section>
