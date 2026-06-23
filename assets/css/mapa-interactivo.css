@@ -136,3 +136,71 @@
   .col-grupo.activo .col-ruta { stroke-dashoffset: 0; opacity: 1; }
   .col-grupo.activo .col-tag  { opacity: 1; }
 }
+.col-grupo:hover .col-triangulo,
+.col-grupo:focus .col-triangulo,
+.col-grupo.activo .col-triangulo {
+  fill: var(--col-hover, #6e1423);
+  transform: scale(1.5);
+  filter: drop-shadow(0 0 8px var(--col-hover, #6e1423));
+}
+
+.col-grupo:hover .col-ruta,
+.col-grupo:focus .col-ruta,
+.col-grupo.activo .col-ruta {
+  stroke-dashoffset: 0 !important;
+  opacity: 1 !important;
+}
+
+.col-grupo:hover .col-tag,
+.col-grupo:focus .col-tag,
+.col-grupo.activo .col-tag {
+  opacity: 1;
+}
+
+.col-ruta {
+  fill: none;
+  stroke: var(--col-hover, #6e1423);
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: stroke-dashoffset 800ms ease, opacity 300ms ease;
+}
+
+.col-tag {
+  opacity: 0;
+  transition: opacity 200ms ease 400ms;
+  pointer-events: none;
+}
+
+.col-tag rect {
+  fill: var(--col-hover, #6e1423);
+}
+
+.col-tag text {
+  fill: var(--hueso, #f5f0e8);
+  font-family: 'Rubik Dirt', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.col-tag-sub {
+  font-family: 'Barlow Condensed', sans-serif !important;
+  font-size: 11px !important;
+  letter-spacing: 0.06em !important;
+  opacity: 0.85;
+}
+
+.col-triangulo {
+  fill: #6e1423;
+  transition: fill 200ms ease, filter 200ms ease, transform 200ms ease;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+@media (hover: none) {
+  .col-grupo.activo .col-triangulo { fill: var(--col-hover, #6e1423); transform: scale(1.5); }
+  .col-grupo.activo .col-ruta { stroke-dashoffset: 0 !important; opacity: 1 !important; }
+  .col-grupo.activo .col-tag { opacity: 1; }
+}
