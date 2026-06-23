@@ -2,7 +2,6 @@
    MAPA INTERACTIVO — mapa.css
    ============================================================ */
 
-/* Variables de color por columna */
 [data-col="ate"]      { --col-hover: #614e3d; }
 [data-col="smata-sr"] { --col-hover: #b3242c; }
 [data-col="smata-fp"] { --col-hover: #611119; }
@@ -11,7 +10,6 @@
 [data-col="smata-ip"] { --col-hover: #612f95; }
 [data-col="clinicas"] { --col-hover: #2f6b3a; }
 
-/* ---------- Contenedor del mapa ---------- */
 .mapa-contenedor {
   position: relative;
   width: 100%;
@@ -33,13 +31,12 @@
   overflow: visible;
 }
 
-/* ---------- Grupos interactivos ---------- */
 .col-grupo {
   cursor: pointer;
   outline: none;
 }
 
-/* ---------- Triángulos — estado neutro ---------- */
+/* Triángulos */
 .col-triangulo {
   fill: #6e1423;
   transition: fill 200ms ease, filter 200ms ease, transform 200ms ease;
@@ -48,27 +45,25 @@
   filter: drop-shadow(0 1px 2px rgba(0,0,0,0.6));
 }
 
-/* ---------- Pines de punto de interés ---------- */
+/* Pines */
 .col-pin {
   fill: #6e1423;
   transition: fill 200ms ease;
 }
 
-/* ---------- Líneas de recorrido — ocultas por defecto ---------- */
+/* Rutas — dasharray/dashoffset los pone el JS, acá solo la transición y apariencia */
 .col-ruta {
   fill: none;
   stroke: var(--col-hover, #6e1423);
   stroke-width: 3.5;
   stroke-linecap: round;
   stroke-linejoin: round;
-  stroke-dasharray: 3000;
-  stroke-dashoffset: 3000;
-  transition: stroke-dashoffset 900ms ease, opacity 300ms ease;
   opacity: 0;
+  transition: stroke-dashoffset 800ms ease, opacity 300ms ease;
   filter: url(#filtro-rugoso);
 }
 
-/* ---------- Tags de nombre — ocultos por defecto ---------- */
+/* Tags */
 .col-tag {
   opacity: 0;
   transition: opacity 200ms ease 400ms;
@@ -95,7 +90,7 @@
   opacity: 0.85;
 }
 
-/* ---------- Estado hover / focus / activo ---------- */
+/* Hover / focus / activo */
 .col-grupo:hover .col-triangulo,
 .col-grupo:focus .col-triangulo,
 .col-grupo.activo .col-triangulo {
@@ -123,25 +118,21 @@
   opacity: 1;
 }
 
-/* ---------- Reducir movimiento ---------- */
+/* Reducir movimiento */
 @media (prefers-reduced-motion: reduce) {
-  .col-ruta {
-    transition: opacity 300ms ease;
-    stroke-dasharray: none;
-    stroke-dashoffset: 0;
-  }
+  .col-ruta      { transition: opacity 300ms ease; }
   .col-triangulo { transition: fill 150ms ease; }
-  .col-tag { transition: opacity 150ms ease; }
+  .col-tag       { transition: opacity 150ms ease; }
 }
 
-/* ---------- Touch ---------- */
+/* Touch */
 @media (hover: none) {
   .col-grupo.activo .col-triangulo {
     fill: var(--col-hover, #6e1423);
     transform: scale(1.5);
     filter: drop-shadow(0 0 8px var(--col-hover, #6e1423));
   }
-  .col-grupo.activo .col-pin    { fill: var(--col-hover, #6e1423); }
-  .col-grupo.activo .col-ruta   { stroke-dashoffset: 0; opacity: 1; }
-  .col-grupo.activo .col-tag    { opacity: 1; }
+  .col-grupo.activo .col-pin  { fill: var(--col-hover, #6e1423); }
+  .col-grupo.activo .col-ruta { stroke-dashoffset: 0; opacity: 1; }
+  .col-grupo.activo .col-tag  { opacity: 1; }
 }
