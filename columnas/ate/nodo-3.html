@@ -88,6 +88,27 @@
     border-radius: 1rem;
     background: rgba(10,9,8,0.2);
   }
+  /* El DIV se encarga de la posición en la pantalla */
+.contenedor-grafico {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  
+  width: 40%;          /* Ocupa el 40% de la pantalla */
+  max-width: 450px;    /* Límite para pantallas grandes */
+  display: flex;       /* Centrado interno perfecto */
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* La IMAGEN solo se encarga de verse bien adentro del div */
+.imagen-grafica {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Evita que la foto se estire o se deforme */
+}
 </style>
 </head>
 <body>
@@ -151,6 +172,9 @@
     <h2 class="modal__titulo" id="mas-titulo">La CGT de los Argentinos</h2>
     <p class="modal__texto">La Confederación General del Trabajo de los Argentinos (CGTA) fue la organización sindical que convocó y organizó la jornada del Cordobazo. En su sede, los distintos gremios confluyeron después de recorrer la ciudad enfrentando la represión policial, transformando una protesta dispersa en una movilización colectiva sin precedentes.</p>
   </div>
+</div>
+  <div class="contenedor-grafico">
+  <img class="imagen-grafica" src="../../assets/img/nodo-3-ate.png" alt="Elemento gráfico">
 </div>
 
 <script src="../../assets/js/columna.js"></script>
