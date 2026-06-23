@@ -8,20 +8,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const esTouch = window.matchMedia('(hover: none)').matches;
 
-  // Calcula el largo real de cada ruta para que la animación sea exacta
-grupos.forEach((grupo) => {
-  const ruta = grupo.querySelector('.col-ruta');
-  if (ruta) {
-    ruta.style.strokeDasharray = '3000';
-    ruta.style.strokeDashoffset = '3000';
-  }
-});
+  // Inicializa cada ruta con dasharray y dashoffset correctos
+  // Usa requestAnimationFrame para asegurarse que el SVG ya renderizó
+  requestAnimationFrame(() => {
+    grupos.forEach((grupo) => {
+      const ruta = grupo.querySelector('.col-ruta');
+      if (!ruta) return;
+
+      // getTotalLength() puede dar 0 si el SVG no renderizó; usamos fallback
+      let largo = 0;
+      try { largo = ruta.getTotalLength(); } catch(e) {}
+      if (!largo || largo < 10) largo = 3000;
+
+      ruta.style.strokeDasharray  = largo;
+      ruta.style.strokeDashoffset = largo;
+      // Forzamos un reflow para que el browser registre el estado inicial
+      ruta.getBoundingClientRect();
+    });
+  });
 
   grupos.forEach((grupo) => {
     const href = grupo.getAttribute('data-href');
 
     if (esTouch) {
-      // Touch: primer tap activa hover, segundo tap navega
       grupo.addEventListener('click', (e) => {
         e.stopPropagation();
         const yaActivo = grupo.classList.contains('activo');
@@ -33,14 +42,11 @@ grupos.forEach((grupo) => {
         }
       });
     } else {
-      // Desktop: click navega directo
       if (href) {
         grupo.addEventListener('click', () => {
           window.location.href = href;
         });
       }
-
-      // Accesibilidad teclado
       grupo.setAttribute('tabindex', '0');
       grupo.setAttribute('role', 'button');
       grupo.addEventListener('keydown', (e) => {
