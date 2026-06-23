@@ -15,17 +15,22 @@
   .pantalla__meta {
     margin-top: 1rem;
   }
+  .pantalla {
+    padding: var(--r-3) var(--r-3) var(--r-4);
+    min-height: 100vh;
+  }
   .pantalla__acciones {
-    margin-top: var(--r-4);
+    position: absolute;
+    top: var(--r-4);
+    right: var(--r-3);
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
+    z-index: 5;
   }
   .pantalla__cta {
-    margin-left: auto;
+    margin-left: 0;
   }
   .pj-presentacion {
-    margin-top: var(--r-4);
+    margin-top: var(--r-3);
     display: grid;
     grid-template-columns: minmax(180px, 240px) 1fr;
     gap: var(--r-4);
@@ -82,10 +87,10 @@
           <p class="pj-presentacion__descripcion">Trabaja en las Industrias Mecánicas del Estado. Esta mañana del 29 de mayo de 1969, apaga su máquina y sale a la calle junto a sus compañeros de taller.</p>
         </div>
       </div>
+    </div>
 
-      <div class="pantalla__acciones">
-        <a class="btn btn--solido pantalla__cta" href="nodo-1.html">Empezar a recorrer →</a>
-      </div>
+    <div class="pantalla__acciones">
+      <a class="btn btn--solido pantalla__cta" href="nodo-1.html">Empezar a recorrer →</a>
     </div>
   </section>
 </main>
