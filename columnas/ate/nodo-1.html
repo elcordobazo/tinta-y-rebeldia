@@ -78,40 +78,38 @@
     width: 100%;
     justify-content: center;
   }
-  /* Contenedor del reproductor (opcional, por si querés centrarlo) */
+/* Contenedor del reproductor dentro del modal */
 .audio-contenedor {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2.5rem auto;
-  padding: 0 1rem;
+  margin: 1.5rem auto; /* Un poco menos de margen para que entre bien en el modal */
+  padding: 0 0.5rem;
   width: 100%;
 }
 
-/* Estilos para el reproductor de audio nativo */
+/* Estilos para el reproductor dentro del modal */
 audio {
   width: 100%;
-  max-width: 400px; /* Evita que se estire demasiado en pantallas grandes */
+  max-width: 100%; /* Que se adapte al ancho total que le dé el modal */
   height: 44px;
   border-radius: 30px;
   background-color: var(--negro, #121212);
   
-  /* Filtros CSS para cambiar los colores nativos del reproductor */
-  /* Este combo le da un tono oscuro/hueso vintage que combina con tu estética */
+  /* Mantenemos el filtro estético */
   filter: invert(90%) sepia(10%) saturate(300%) hue-rotate(340deg) brightness(95%);
   
-  /* Animación suave para que aparezca junto con los demás elementos */
-  opacity: 0;
-  animation: subir 900ms 1200ms ease forwards;
+  /* IMPORTANTE: Quitamos la animación de retraso y la opacidad 0 */
+  opacity: 1; 
   
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Efecto visual cuando el usuario pasa el mouse por arriba */
 audio:hover {
   transform: scale(1.02);
-  box-shadow: 0 8px 24px rgba(110, 20, 35, 0.15); /* Destello rojo sutil de fondo */
+  box-shadow: 0 4px 15px rgba(110, 20, 35, 0.15);
 }
+
 </style>
 </head>
 <body>
@@ -181,6 +179,7 @@ audio:hover {
   <source src="assets/audio/COLUMNA1-ATE-NODO1.mp3" type="audio/mpeg">
   Tu navegador no soporta el elemento de audio.
 </audio>
+</div>
 </div>
 
 <!-- Modal: Recurso gráfico -->
