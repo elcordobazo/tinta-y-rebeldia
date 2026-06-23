@@ -78,6 +78,38 @@
     width: 100%;
     justify-content: center;
   }
+    /* Contenedor del reproductor dentro del modal */
+.audio-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem auto; /* Un poco menos de margen para que entre bien en el modal */
+  padding: 0 0.5rem;
+  width: 100%;
+}
+
+/* Estilos para el reproductor dentro del modal */
+audio {
+  width: 100%;
+  max-width: 100%; /* Que se adapte al ancho total que le dé el modal */
+  height: 44px;
+  border-radius: 30px;
+  background-color: var(--negro, #121212);
+  
+  /* Mantenemos el filtro estético */
+  filter: invert(90%) sepia(10%) saturate(300%) hue-rotate(340deg) brightness(95%);
+  
+  /* IMPORTANTE: Quitamos la animación de retraso y la opacidad 0 */
+  opacity: 1; 
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+audio:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(110, 20, 35, 0.15);
+}
+
 </style>
 </head>
 <body>
@@ -98,16 +130,16 @@
 
 <main id="contenido">
   <section class="pantalla">
-    <div class="pantalla__fondo" style="background-image: url('https://picsum.photos/seed/smata-ferreyra-nodo2/1600/1000?grayscale');"></div>
+    <div class="pantalla__fondo" style="background-image: url('../../assets/img/nodo-2-smataf.png');"></div>
 
     <div class="pantalla__contenido">
       <p class="eyebrow pantalla__eyebrow">Nodo 2</p>
-      <h1 class="pantalla__titulo">Nodo 2 — SMATA Ferreyra</h1>
+      <h1 class="pantalla__titulo">El repliegue hacia Nueva Córdoba</h1>
       <div class="pantalla__hero">
         <div>
           <p class="pantalla__meta">
-            <span>Centro de la ciudad</span>
-            <span class="meta-hora"><strong>Horario</strong></span>
+            <span>Av. Vélez Sarsfield al 600</span>
+            <span class="meta-hora"><strong>12:15 hs</strong></span>
           </p>
 
           <div class="pj-presentacion">
@@ -144,7 +176,10 @@
     <button class="modal__cerrar" aria-label="Cerrar">×</button>
     <p class="eyebrow modal__rotulo">Relato del personaje</p>
     <h2 class="modal__titulo" id="relato-titulo">Mecánico SMATA Ferreyra</h2>
-    <p class="modal__texto">Relato pendiente de la columna.</p>
+        <audio controls>
+  <source src="../../assets/audio/COLUMNA5-SMATAF-NODO2.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
   </div>
 </div>
 
@@ -152,9 +187,9 @@
 <div class="modal-overlay" id="modal-recurso" role="dialog" aria-modal="true" aria-labelledby="recurso-titulo">
   <div class="modal">
     <button class="modal__cerrar" aria-label="Cerrar">×</button>
-    <p class="eyebrow modal__rotulo">Documento histórico de la cuadra</p>
-    <h2 class="modal__titulo" id="recurso-titulo">Centro en conflicto</h2>
-    <p class="modal__texto">Recurso pendiente de la columna.</p>
+    <p class="eyebrow modal__rotulo">Archivo Contextual Smata Ferreyra</p>
+    <h2 class="modal__titulo" id="recurso-titulo">Combates urbanos en las cercanías de comercios de Nueva Córdoba</h2>
+    <p class="modal__texto">Al verse impedidos de entrar al centro histórico, los remanentes de Ferreyra se desplazaron hacia Nueva Córdoba. La confluencia con estudiantes y trabajadores mineros dio origen a focos defensivos que neutralizaron el accionar de la División de Caballería en las áreas comerciales periféricas.</p>
   </div>
 </div>
 
