@@ -11,14 +11,14 @@
   :root { --col-acento: var(--col-ate); }
   .pantalla {
     min-height: 100vh;
-    padding: var(--r-6) var(--r-3) var(--r-5);
+    padding: var(--r-4) var(--r-3) var(--r-4);
     position: relative;
   }
   .pantalla__titulo {
     margin-top: 0.35rem;
   }
   .pantalla__meta {
-    margin-top: var(--r-2);
+    margin-top: var(--r-1);
     display: inline-flex;
     align-items: center;
     gap: var(--r-2);
@@ -47,14 +47,15 @@
   }
   .pantalla__hero {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 320px);
+    grid-template-columns: minmax(0, 1fr) 280px;
     gap: var(--r-4);
     align-items: start;
-    margin-top: var(--r-4);
+    margin-top: var(--r-3);
   }
   .pj-presentacion {
-    margin-top: var(--r-4);
     width: 240px;
+    margin-top: 0;
+    align-self: start;
   }
   .pj-presentacion__imagen {
     width: 100%;
@@ -64,13 +65,14 @@
     background: rgba(10,9,8,0.2);
   }
   .acciones-nodo {
+    position: absolute;
+    top: 50%;
+    right: var(--r-3);
+    transform: translateY(-50%);
     display: grid;
     gap: var(--r-3);
-    width: 100%;
-    max-width: 320px;
+    width: 260px;
     justify-items: end;
-    align-self: start;
-    justify-self: end;
   }
   .acciones-nodo .boton-flotante {
     width: 100%;
