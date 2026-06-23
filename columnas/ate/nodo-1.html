@@ -78,6 +78,40 @@
     width: 100%;
     justify-content: center;
   }
+  /* Contenedor del reproductor (opcional, por si querés centrarlo) */
+.audio-contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
+  width: 100%;
+}
+
+/* Estilos para el reproductor de audio nativo */
+audio {
+  width: 100%;
+  max-width: 400px; /* Evita que se estire demasiado en pantallas grandes */
+  height: 44px;
+  border-radius: 30px;
+  background-color: var(--negro, #121212);
+  
+  /* Filtros CSS para cambiar los colores nativos del reproductor */
+  /* Este combo le da un tono oscuro/hueso vintage que combina con tu estética */
+  filter: invert(90%) sepia(10%) saturate(300%) hue-rotate(340deg) brightness(95%);
+  
+  /* Animación suave para que aparezca junto con los demás elementos */
+  opacity: 0;
+  animation: subir 900ms 1200ms ease forwards;
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto visual cuando el usuario pasa el mouse por arriba */
+audio:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 24px rgba(110, 20, 35, 0.15); /* Destello rojo sutil de fondo */
+}
 </style>
 </head>
 <body>
@@ -143,9 +177,10 @@
     <button class="modal__cerrar" aria-label="Cerrar">×</button>
     <p class="eyebrow modal__rotulo">Relato del personaje</p>
     <h2 class="modal__titulo" id="relato-titulo">Obrero técnico de IME</h2>
-    <p class="modal__narracion">"Apagamos los motores de la línea de montaje del Rastrojero. Dejamos las herramientas y salimos ordenados por la Avenida Roca. El descontento por las suspensiones y la quita de derechos del régimen de Onganía se sentía en cada overol. Al marchar, se nos unieron compañeros de talleres mecánicos de la Ruta 20."</p>
-    <p class="modal__texto">Los trabajadores estatales mecánicos nucleados en ATE iniciaron una de las marchas clave desde la periferia fabril. Su salida sumó densidad al plenario obrero al aglutinar los talleres dispersos del sector sudoeste de la ciudad.</p>
-  </div>
+    <audio controls>
+  <source src="assets/audio/COLUMNA1-ATE-NODO1.mp3" type="audio/mpeg">
+  Tu navegador no soporta el elemento de audio.
+</audio>
 </div>
 
 <!-- Modal: Recurso gráfico -->
