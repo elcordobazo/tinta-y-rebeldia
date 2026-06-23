@@ -20,18 +20,21 @@
     min-height: 100vh;
   }
   .pantalla__acciones {
-    position: absolute;
-    top: var(--r-4);
-    right: var(--r-3);
-    display: flex;
-    z-index: 5;
+    position: static;
+    display: block;
   }
   .pantalla__cta {
+    justify-self: end;
+    align-self: end;
     margin-left: 0;
   }
   .pj-presentacion {
     margin-top: var(--r-3);
     display: grid;
+    grid-template-columns: minmax(180px, 240px) minmax(220px, 1fr);
+    gap: var(--r-4);
+    align-items: start;
+  }
     grid-template-columns: minmax(180px, 240px) 1fr;
     gap: var(--r-4);
     align-items: start;
@@ -86,11 +89,10 @@
           <p class="pj-card__nombre">Obrero técnico, 25 años</p>
           <p class="pj-presentacion__descripcion">Trabaja en las Industrias Mecánicas del Estado. Esta mañana del 29 de mayo de 1969, apaga su máquina y sale a la calle junto a sus compañeros de taller.</p>
         </div>
+        <div class="pantalla__acciones">
+          <a class="btn btn--solido pantalla__cta" href="nodo-1.html">Empezar a recorrer →</a>
+        </div>
       </div>
-    </div>
-
-    <div class="pantalla__acciones">
-      <a class="btn btn--solido pantalla__cta" href="nodo-1.html">Empezar a recorrer →</a>
     </div>
   </section>
 </main>
