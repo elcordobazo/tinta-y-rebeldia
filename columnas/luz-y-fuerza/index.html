@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Columna Luz y Fuerza — Tinta y Rebeldía</title>
+<meta name="description" content="Recorré la columna de Luz y Fuerza durante el Cordobazo.">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/columna.css">
+<style>
+  :root { --col-acento: var(--col-lyf); }
+  .pantalla__titulo {
+    margin-top: 0.35rem;
+  }
+  .pantalla__meta {
+    margin-top: 1rem;
+  }
+  .pantalla {
+    position: relative;
+    padding: var(--r-3) var(--r-3) var(--r-4);
+    min-height: 100vh;
+  }
+  .pantalla__acciones {
+    position: absolute;
+    right: var(--r-3);
+    bottom: var(--r-2);
+    display: flex;
+    z-index: 60;
+  }
+  .pantalla__cta {
+    margin-left: 0;
+  }
+  .pantalla__acciones .btn {
+    background: var(--col-acento);
+    border-color: var(--col-acento);
+    color: var(--hueso);
+  }
+  .pj-presentacion {
+    margin-top: var(--r-3);
+    display: grid;
+    grid-template-columns: minmax(180px, 240px) 1fr;
+    gap: var(--r-4);
+    align-items: start;
+    border-left: 3px solid var(--col-acento, var(--bordo));
+    padding-left: var(--r-3);
+  }
+  .pj-presentacion__imagen {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 1rem;
+    background: rgba(10,9,8,0.2);
+  }
+  .pj-presentacion__descripcion {
+    margin-top: 0;
+    color: var(--hueso-op);
+    line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<div class="progreso-nodos" aria-hidden="true">
+  <div class="progreso-nodos__seg activo"></div>
+  <div class="progreso-nodos__seg"></div>
+  <div class="progreso-nodos__seg"></div>
+  <div class="progreso-nodos__seg"></div>
+</div>
+
+<header class="nav-top">
+  <a class="nav-top__brand" href="../../index.html">Tinta y Rebeldía</a>
+  <a class="nav-top__link" href="../../contexto.html#mapa">Volver al mapa</a>
+</header>
+
+<main id="contenido">
+  <section class="pantalla">
+    <div class="pantalla__fondo" style="background-image: url('https://picsum.photos/seed/luz-y-fuerza/1600/1000?grayscale');"></div>
+
+    <div class="pantalla__contenido">
+      <p class="eyebrow pantalla__eyebrow">Columna 04 — Luz y Fuerza</p>
+      <h1 class="pantalla__titulo">Sindicato de Luz y Fuerza</h1>
+      <p class="pantalla__meta">
+        <span>Punto de partida: <strong>Estación Luz y Fuerza</strong></span>
+      </p>
+
+      <div class="pj-presentacion">
+        <img class="pj-presentacion__imagen" src="../../assets/img/mapa-cordoba.png" alt="Retrato del personaje guía">
+        <div>
+          <p class="pj-card__rotulo">Tu guía en esta columna</p>
+          <p class="pj-card__nombre">Electricista, 35 años</p>
+          <p class="pj-presentacion__descripcion">Trabaja en la central de Luz y Fuerza. El 29 de mayo de 1969, interrumpe sus labores para sumarse a la histórica movilización del Cordobazo.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pantalla__acciones">
+      <a class="btn btn--solido pantalla__cta" href="nodo-1.html">Empezar a recorrer →</a>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

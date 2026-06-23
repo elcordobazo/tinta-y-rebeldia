@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nodo 3 — Luz y Fuerza | Columna Luz y Fuerza</title>
+<meta name="description" content="La columna Luz y Fuerza confluye en la CGT.">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/columna.css">
+<style>
+  :root { --col-acento: var(--col-lyf); }
+  .pantalla {
+    min-height: 100vh;
+    padding: var(--r-4) var(--r-3) var(--r-4);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .pantalla__contenido {
+    margin-top: 0;
+  }
+  .pantalla__titulo {
+    margin-top: 0.35rem;
+  }
+  .pantalla__meta {
+    margin-top: var(--r-1);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--r-2);
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--col-acento);
+    border-radius: 1.5rem;
+    background: rgba(92, 74, 58, 0.12);
+    white-space: nowrap;
+    max-width: min(100%, 42rem);
+  }
+  .pantalla__meta span {
+    color: var(--hueso);
+  }
+  .pantalla__meta .meta-hora {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.8rem;
+    min-height: 2.8rem;
+    padding: 0.35rem;
+    border-radius: 50%;
+    background: var(--col-acento);
+    color: var(--hueso);
+    font-weight: 700;
+    text-align: center;
+  }
+  .acciones-nodo-izq {
+    display: grid;
+    gap: var(--r-3);
+    width: 260px;
+    margin-top: var(--r-3);
+  }
+  .acciones-nodo-izq .boton-flotante {
+    width: 100%;
+    justify-content: center;
+  }
+  .pantalla__hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: var(--r-4);
+    align-items: start;
+    margin-top: var(--r-3);
+  }
+  .pantalla__hero > div:first-child {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .pj-presentacion {
+    margin-top: 0;
+    width: 240px;
+    align-self: start;
+    border-left: 3px solid var(--col-acento, var(--bordo));
+    padding-left: var(--r-3);
+  }
+  .pj-presentacion__imagen {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 1rem;
+    background: rgba(10,9,8,0.2);
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<div class="progreso-nodos" aria-hidden="true">
+  <div class="progreso-nodos__seg activo"></div>
+  <div class="progreso-nodos__seg activo"></div>
+  <div class="progreso-nodos__seg activo"></div>
+  <div class="progreso-nodos__seg activo"></div>
+</div>
+
+<header class="nav-top">
+  <a class="nav-top__brand" href="../../index.html">Tinta y Rebeldía</a>
+  <a class="nav-top__link" href="../../contexto.html#mapa">Volver al mapa</a>
+</header>
+
+<main id="contenido">
+  <section class="pantalla">
+    <div class="pantalla__fondo" style="background-image: url('https://picsum.photos/seed/cgt-confluencia/1600/1000?grayscale');"></div>
+
+    <div class="pantalla__contenido">
+      <p class="eyebrow pantalla__eyebrow">Nodo 3 — Confluencia</p>
+      <h1 class="pantalla__titulo">Llegada a la CGT</h1>
+      <div class="pantalla__hero">
+        <div>
+          <p class="pantalla__meta">
+            <span>Sede de la CGT de los Argentinos</span>
+            <span class="meta-hora"><strong>Horario</strong></span>
+          </p>
+
+          <div class="acciones-nodo-izq">
+            <button class="boton-flotante" data-abre-modal="modal-mas">
+              <svg class="boton-flotante__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h8M8 14h5M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z"/></svg>
+              Ver más
+            </button>
+          </div>
+        </div>
+
+        <div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<nav class="nav-nodo">
+  <a class="nav-nodo__volver" href="nodo-2.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Nodo 2
+  </a>
+  <a class="btn nav-nodo__avanzar" href="../smata-ferreyra/index.html">Siguiente columna: SMATA Ferreyra →</a>
+</nav>
+
+<!-- Modal: Ver más -->
+<div class="modal-overlay" id="modal-mas" role="dialog" aria-modal="true" aria-labelledby="mas-titulo">
+  <div class="modal">
+    <button class="modal__cerrar" aria-label="Cerrar">×</button>
+    <p class="eyebrow modal__rotulo">Contexto de la confluencia</p>
+    <h2 class="modal__titulo" id="mas-titulo">La CGT de los Argentinos</h2>
+    <p class="modal__texto">La Confederación General del Trabajo de los Argentinos (CGTA) fue la organización sindical que convocó y organizó la jornada del Cordobazo. En su sede, los distintos gremios confluyeron después de recorrer la ciudad enfrentando la represión policial, transformando una protesta dispersa en una movilización colectiva sin precedentes.</p>
+  </div>
+</div>
+
+<script src="../../assets/js/columna.js"></script>
+</body>
+</html>

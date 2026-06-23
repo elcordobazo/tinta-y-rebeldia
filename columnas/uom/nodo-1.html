@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nodo 1 — UOM | Columna UOM</title>
+<meta name="description" content="UOM participa del Cordobazo.">
+<link rel="stylesheet" href="../../assets/css/base.css">
+<link rel="stylesheet" href="../../assets/css/columna.css">
+<style>
+  :root { --col-acento: var(--col-uom); }
+  .pantalla {
+    min-height: 100vh;
+    padding: var(--r-4) var(--r-3) var(--r-4);
+    position: relative;
+  }
+  .pantalla__titulo {
+    margin-top: 0.35rem;
+  }
+  .pantalla__meta {
+    margin-top: var(--r-1);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--r-2);
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--col-acento);
+    border-radius: 1.5rem;
+    background: rgba(92, 74, 58, 0.12);
+    white-space: nowrap;
+    max-width: min(100%, 42rem);
+  }
+  .pantalla__meta span {
+    color: var(--hueso);
+  }
+  .pantalla__meta .meta-hora {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.8rem;
+    min-height: 2.8rem;
+    padding: 0.35rem;
+    border-radius: 50%;
+    background: var(--col-acento);
+    color: var(--hueso);
+    font-weight: 700;
+    text-align: center;
+  }
+  .pantalla__hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: var(--r-4);
+    align-items: start;
+    margin-top: var(--r-3);
+  }
+  .pj-presentacion {
+    width: 240px;
+    margin-top: 0;
+    align-self: start;
+  }
+  .pj-presentacion__imagen {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 1rem;
+    background: rgba(10,9,8,0.2);
+  }
+  .acciones-nodo {
+    position: absolute;
+    top: 50%;
+    right: 8rem;
+    transform: translateY(-50%);
+    display: grid;
+    gap: var(--r-3);
+    width: 260px;
+    justify-items: end;
+  }
+  .acciones-nodo .boton-flotante {
+    width: 100%;
+    justify-content: center;
+  }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<div class="progreso-nodos" aria-hidden="true">
+  <div class="progreso-nodos__seg activo"></div>
+  <div class="progreso-nodos__seg activo"></div>
+  <div class="progreso-nodos__seg"></div>
+  <div class="progreso-nodos__seg"></div>
+</div>
+
+<header class="nav-top">
+  <a class="nav-top__brand" href="../../index.html">Tinta y Rebeldía</a>
+  <a class="nav-top__link" href="../../contexto.html#mapa">Volver al mapa</a>
+</header>
+
+<main id="contenido">
+  <section class="pantalla">
+    <div class="pantalla__fondo" style="background-image: url('https://picsum.photos/seed/uom-nodo1/1600/1000?grayscale');"></div>
+    <div class="pantalla__contenido">
+      <p class="eyebrow pantalla__eyebrow">Nodo 1</p>
+      <h1 class="pantalla__titulo">Nodo 1 — UOM</h1>
+      <div class="pantalla__hero">
+        <div>
+          <p class="pantalla__meta">
+            <span>Fábrica UOM</span>
+            <span class="meta-hora"><strong>Horario</strong></span>
+          </p>
+
+          <div class="pj-presentacion">
+            <img class="pj-presentacion__imagen" src="../../assets/img/mapa-cordoba.png" alt="Retrato del personaje guía">
+          </div>
+        </div>
+
+        <div class="acciones-nodo">
+          <button class="boton-flotante" data-abre-modal="modal-relato">
+            <svg class="boton-flotante__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h8M8 14h5M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z"/></svg>
+            Escuchar el relato
+          </button>
+          <button class="boton-flotante" data-abre-modal="modal-recurso">
+            <svg class="boton-flotante__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h8M8 14h5M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z"/></svg>
+            Ver archivo contextual
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<nav class="nav-nodo">
+  <a class="nav-nodo__volver" href="index.html">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Presentación
+  </a>
+  <a class="btn nav-nodo__avanzar" href="nodo-2.html">Ir al nodo 2 →</a>
+</nav>
+
+<!-- Modal: Relato del personaje -->
+<div class="modal-overlay" id="modal-relato" role="dialog" aria-modal="true" aria-labelledby="relato-titulo">
+  <div class="modal">
+    <button class="modal__cerrar" aria-label="Cerrar">×</button>
+    <p class="eyebrow modal__rotulo">Relato del personaje</p>
+    <h2 class="modal__titulo" id="relato-titulo">Metalúrgico UOM</h2>
+    <p class="modal__texto">Relato pendiente de la columna UOM.</p>
+  </div>
+</div>
+
+<!-- Modal: Recurso gráfico -->
+<div class="modal-overlay" id="modal-recurso" role="dialog" aria-modal="true" aria-labelledby="recurso-titulo">
+  <div class="modal">
+    <button class="modal__cerrar" aria-label="Cerrar">×</button>
+    <p class="eyebrow modal__rotulo">Documento histórico</p>
+    <h2 class="modal__titulo" id="recurso-titulo">UOM</h2>
+    <p class="modal__texto">Recurso pendiente de la columna.</p>
+  </div>
+</div>
+
+<script src="../../assets/js/columna.js"></script>
+</body>
+</html>
