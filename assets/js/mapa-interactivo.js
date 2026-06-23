@@ -9,16 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const esTouch = window.matchMedia('(hover: none)').matches;
 
   // Calcula el largo real de cada ruta para que la animación sea exacta
-  grupos.forEach((grupo) => {
-    const ruta = grupo.querySelector('.col-ruta');
-    if (ruta) {
-      try {
-        const largo = ruta.getTotalLength();
-        ruta.style.strokeDasharray = largo;
-        ruta.style.strokeDashoffset = largo;
-      } catch(e) {}
-    }
-  });
+grupos.forEach((grupo) => {
+  const ruta = grupo.querySelector('.col-ruta');
+  if (ruta) {
+    ruta.style.strokeDasharray = '3000';
+    ruta.style.strokeDashoffset = '3000';
+  }
+});
 
   grupos.forEach((grupo) => {
     const href = grupo.getAttribute('data-href');
