@@ -1,5 +1,5 @@
 // ============================================================
-// MAPA INTERACTIVO — pegá esto en tu archivo JS del mapa
+// MAPA INTERACTIVO — mapa.js
 // ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,14 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const esTouch = window.matchMedia('(hover: none)').matches;
 
-  // Calcula el largo real de cada ruta y lo asigna como dasharray/dashoffset
-  // para que la animación de dibujado sea precisa sin importar el zoom
+  // Calcula el largo real de cada ruta para que la animación sea exacta
   grupos.forEach((grupo) => {
     const ruta = grupo.querySelector('.col-ruta');
     if (ruta) {
-      const largo = ruta.getTotalLength();
-      ruta.style.strokeDasharray = largo;
-      ruta.style.strokeDashoffset = largo;
+      try {
+        const largo = ruta.getTotalLength();
+        ruta.style.strokeDasharray = largo;
+        ruta.style.strokeDashoffset = largo;
+      } catch(e) {}
     }
   });
 
@@ -23,8 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const href = grupo.getAttribute('data-href');
 
     if (esTouch) {
-      // Touch: primer tap activa, segundo tap navega
-      grupo.addEventListener('click', () => {
+      // Touch: primer tap activa hover, segundo tap navega
+      grupo.addEventListener('click', (e) => {
+        e.stopPropagation();
         const yaActivo = grupo.classList.contains('activo');
         grupos.forEach((g) => g.classList.remove('activo'));
         if (!yaActivo) {
@@ -53,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Cerrar activo en touch si tocás fuera del mapa
+  // Cerrar activo en touch si tocás fuera
   document.addEventListener('click', (e) => {
     if (!e.target.closest('.col-grupo')) {
       grupos.forEach((g) => g.classList.remove('activo'));
