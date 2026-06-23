@@ -9,19 +9,24 @@
 <link rel="stylesheet" href="../../assets/css/columna.css">
 <style>
   :root { --col-acento: var(--col-ate); }
+  .pantalla {
+    min-height: calc(100vh - 4rem);
+    padding: var(--r-3) var(--r-3) var(--r-4);
+  }
   .pantalla__titulo {
     margin-top: 0.35rem;
   }
   .pantalla__meta {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: space-between;
+    margin-top: var(--r-2);
+    display: inline-flex;
     align-items: center;
     gap: var(--r-3);
     padding: 1rem 1.25rem;
     border: 1px solid var(--col-acento);
     border-radius: 1.5rem;
     background: rgba(92, 74, 58, 0.12);
+    white-space: nowrap;
+    max-width: min(100%, 42rem);
   }
   .pantalla__meta span {
     color: var(--hueso);
@@ -41,18 +46,15 @@
   }
   .pantalla__hero {
     display: grid;
-    grid-template-columns: minmax(180px, 280px) minmax(260px, 1fr);
+    grid-template-columns: minmax(260px, 1fr) 220px;
     gap: var(--r-4);
     align-items: start;
     margin-top: var(--r-4);
+    justify-items: end;
   }
   .pj-presentacion {
-    display: grid;
-    grid-template-columns: minmax(180px, 240px) 1fr;
-    gap: var(--r-4);
-    align-items: start;
-    border-left: 3px solid var(--col-acento, var(--bordo));
-    padding-left: var(--r-3);
+    margin-top: var(--r-4);
+    width: min(280px, 100%);
   }
   .pj-presentacion__imagen {
     width: 100%;
@@ -61,20 +63,15 @@
     border-radius: 1rem;
     background: rgba(10,9,8,0.2);
   }
-  .pj-presentacion__descripcion {
-    margin-top: 0;
-    color: var(--hueso-op);
-    line-height: 1.6;
-  }
   .acciones-nodo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    display: grid;
     gap: var(--r-3);
     width: 100%;
-    max-width: 340px;
-    margin-left: auto;
+    max-width: 220px;
+    justify-items: center;
+    align-self: start;
+    justify-self: end;
+    padding-top: var(--r-2);
   }
   .acciones-nodo .boton-flotante {
     width: 100%;
@@ -113,11 +110,6 @@
 
           <div class="pj-presentacion">
             <img class="pj-presentacion__imagen" src="../../assets/img/mapa-cordoba.png" alt="Retrato del personaje guía">
-            <div>
-              <p class="pj-card__rotulo">Tu guía en esta columna</p>
-              <p class="pj-card__nombre">Obrero técnico, 25 años</p>
-              <p class="pj-presentacion__descripcion">Trabaja en las Industrias Mecánicas del Estado. Esta mañana del 29 de mayo de 1969, apaga su máquina y sale a la calle junto a sus compañeros de taller.</p>
-            </div>
           </div>
         </div>
 
