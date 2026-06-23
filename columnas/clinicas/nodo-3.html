@@ -88,6 +88,28 @@
     border-radius: 1rem;
     background: rgba(10,9,8,0.2);
   }
+   /* El DIV se encarga de la posición en la pantalla */
+.contenedor-grafico {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%);
+  
+  width: 40%;          /* Ocupa el 40% de la pantalla */
+  max-width: 450px;    /* Límite para pantallas grandes */
+  display: flex;       /* Centrado interno perfecto */
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+/* La IMAGEN solo se encarga de verse bien adentro del div */
+.imagen-grafica {
+  width: 100%;
+  height: auto;
+  object-fit: contain; /* Evita que la foto se estire o se deforme */
+}
+
 </style>
 </head>
 <body>
@@ -108,16 +130,16 @@
 
 <main id="contenido">
   <section class="pantalla">
-    <div class="pantalla__fondo" style="background-image: url('https://picsum.photos/seed/cgt-confluencia/1600/1000?grayscale');"></div>
+    <div class="pantalla__fondo" style="background-image: url('../../assets/img/nodo-3-clinicas.png');"></div>
 
     <div class="pantalla__contenido">
-      <p class="eyebrow pantalla__eyebrow">Nodo 3 — Confluencia</p>
-      <h1 class="pantalla__titulo">Llegada a la CGT</h1>
+      <p class="eyebrow pantalla__eyebrow">Nodo 3</p>
+      <h1 class="pantalla__titulo">Del conflicto a la Gráfica</h1>
       <div class="pantalla__hero">
         <div>
           <p class="pantalla__meta">
-            <span>Sede de la CGT de los Argentinos</span>
-            <span class="meta-hora"><strong>Horario</strong></span>
+            <span>Política Obrera N° 52</span>
+            <span class="meta-hora"><strong>Volante</strong></span>
           </p>
 
           <div class="acciones-nodo-izq">
@@ -146,11 +168,15 @@
 <div class="modal-overlay" id="modal-mas" role="dialog" aria-modal="true" aria-labelledby="mas-titulo">
   <div class="modal">
     <button class="modal__cerrar" aria-label="Cerrar">×</button>
-    <p class="eyebrow modal__rotulo">Contexto de la confluencia</p>
-    <h2 class="modal__titulo" id="mas-titulo">La CGT de los Argentinos</h2>
-    <p class="modal__texto">La Confederación General del Trabajo de los Argentinos (CGTA) fue la organización sindical que convocó y organizó la jornada del Cordobazo. En su sede, los distintos gremios confluyeron después de recorrer la ciudad enfrentando la represión policial, transformando una protesta dispersa en una movilización colectiva sin precedentes.</p>
+    <p class="eyebrow modal__rotulo">Relación diseño-historia</p>
+    <h2 class="modal__titulo" id="mas-titulo">volante "Política Obrera N° 52" (Publicado exactamente el 29 de mayo de 1969), disponible hoy digitalizado en el archivo público del CeDInCI.</h2>
+    <p class="modal__texto">Este volante es un ejemplo puro de la gráfica política de agitación directa. Su composición simple prescinde de imágenes y se basa puramente en la jerarquía tipográfica lineal y la reproducción económica veloz. Como documento histórico, materializa la alianza obrero-estudiantil en un formato pensado para ser doblado y distribuido de mano en mano eludiendo requisas.</p>
   </div>
 </div>
+    <div class="contenedor-grafico">
+  <img class="imagen-grafica" src="../../assets/img/nodo-3-clinicas.png" alt="Elemento gráfico">
+</div>
+
 
 <script src="../../assets/js/columna.js"></script>
 </body>
