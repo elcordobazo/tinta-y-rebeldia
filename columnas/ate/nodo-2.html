@@ -9,6 +9,75 @@
 <link rel="stylesheet" href="../../assets/css/columna.css">
 <style>
   :root { --col-acento: var(--col-ate); }
+  .pantalla {
+    min-height: 100vh;
+    padding: var(--r-4) var(--r-3) var(--r-4);
+    position: relative;
+  }
+  .pantalla__titulo {
+    margin-top: 0.35rem;
+  }
+  .pantalla__meta {
+    margin-top: var(--r-1);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--r-2);
+    padding: 0.55rem 0.9rem;
+    border: 1px solid var(--col-acento);
+    border-radius: 1.5rem;
+    background: rgba(92, 74, 58, 0.12);
+    white-space: nowrap;
+    max-width: min(100%, 42rem);
+  }
+  .pantalla__meta span {
+    color: var(--hueso);
+  }
+  .pantalla__meta .meta-hora {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.8rem;
+    min-height: 2.8rem;
+    padding: 0.35rem;
+    border-radius: 50%;
+    background: var(--col-acento);
+    color: var(--hueso);
+    font-weight: 700;
+    text-align: center;
+  }
+  .pantalla__hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: var(--r-4);
+    align-items: start;
+    margin-top: var(--r-3);
+  }
+  .pj-presentacion {
+    width: 240px;
+    margin-top: 0;
+    align-self: start;
+  }
+  .pj-presentacion__imagen {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 1rem;
+    background: rgba(10,9,8,0.2);
+  }
+  .acciones-nodo {
+    position: absolute;
+    top: 50%;
+    right: 8rem;
+    transform: translateY(-50%);
+    display: grid;
+    gap: var(--r-3);
+    width: 260px;
+    justify-items: end;
+  }
+  .acciones-nodo .boton-flotante {
+    width: 100%;
+    justify-content: center;
+  }
 </style>
 </head>
 <body>
@@ -34,20 +103,28 @@
     <div class="pantalla__contenido">
       <p class="eyebrow pantalla__eyebrow">Nodo 2</p>
       <h1 class="pantalla__titulo">El encuentro céntrico y la resistencia</h1>
-      <p class="pantalla__meta">
-        <span>Esquina de Santa Rosa y General Paz</span>
-        <span><strong>11:30 hs</strong></span>
-      </p>
+      <div class="pantalla__hero">
+        <div>
+          <p class="pantalla__meta">
+            <span>Esquina de Santa Rosa y General Paz</span>
+            <span class="meta-hora"><strong>11:30 hs</strong></span>
+          </p>
 
-      <div class="acciones-nodo">
-        <button class="boton-flotante" data-abre-modal="modal-relato">
-          <svg class="boton-flotante__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h8M8 14h5M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z"/></svg>
-          Escuchar el relato
-        </button>
-        <button class="boton-flotante" data-abre-modal="modal-recurso">
-          <svg class="boton-flotante__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
-          Ver documento histórico de la cuadra
-        </button>
+          <div class="pj-presentacion">
+            <img class="pj-presentacion__imagen" src="../../assets/img/mapa-cordoba.png" alt="Retrato del personaje guía">
+          </div>
+        </div>
+
+        <div class="acciones-nodo">
+          <button class="boton-flotante" data-abre-modal="modal-relato">
+            <svg class="boton-flotante__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 10h8M8 14h5M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9Z"/></svg>
+            Escuchar el relato
+          </button>
+          <button class="boton-flotante" data-abre-modal="modal-recurso">
+            <svg class="boton-flotante__icono" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="9" r="1.5"/><path d="m21 15-5-5L5 21"/></svg>
+            Ver documento histórico de la cuadra
+          </button>
+        </div>
       </div>
     </div>
   </section>
