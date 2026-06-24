@@ -402,74 +402,80 @@
     document.getElementById('selector').scrollIntoView({ behavior: 'smooth' });
   });
 
-  const CLAVE_FORO = 'tinta-y-rebeldia-foro';
+const FIREBASE_URL = 'https://tinta-y-rebeldia-default-rtdb.firebaseio.com/foro.json';
 
-  function leerForo() {
+async function leerForo() {
+  try {
+    const res = await fetch(FIREBASE_URL);
+    const data = await res.json();
+    if (!data) return [];
+    // Firebase devuelve un objeto con keys automáticas, lo convertimos a array
+    return Object.values(data);
+  } catch {
+    return [];
+  }
+}
+
+async function guardarPublicacion(pub) {
+  await fetch(FIREBASE_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(pub)
+  });
+}
+
+async function pintarForo() {
+  const publicaciones = await leerForo();
+  foroContador.textContent = `${publicaciones.length} publicada${publicaciones.length === 1 ? '' : 's'}`;
+  foroGrid.innerHTML = '';
+
+  if (publicaciones.length === 0) {
+    foroVacio.style.display = 'block';
+    return;
+  }
+  foroVacio.style.display = 'none';
+
+  publicaciones.slice().reverse().forEach((pub) => {
+    const card = document.createElement('article');
+    card.className = 'foro-card';
+    card.innerHTML = `
+      <div class="foro-card__imagen" style="background-image: url('${pub.src}');"></div>
+      <div class="foro-card__cuerpo">
+        <p class="foro-card__autor">${pub.autor}</p>
+        <p class="foro-card__fecha">${pub.fecha} — ${pub.imagenTitulo}</p>
+      </div>
+    `;
+    foroGrid.appendChild(card);
+  });
+}
+
+btnPublicar.addEventListener('click', async () => {
+  if (!imagenSeleccionada) return;
+  const autor = inputAutor.value.trim() || 'Anónimo';
+
+  let srcParaForo = imagenSeleccionada.src;
+  if (editorIntervencion.hayDibujo()) {
     try {
-      return JSON.parse(localStorage.getItem(CLAVE_FORO)) || [];
-    } catch {
-      return [];
+      srcParaForo = editorIntervencion.exportarComoDataUrl();
+    } catch (err) {
+      console.warn('No se pudo exportar la intervención:', err);
     }
   }
 
-  function guardarForo(lista) {
-    localStorage.setItem(CLAVE_FORO, JSON.stringify(lista));
-  }
-
-  function pintarForo() {
-    const publicaciones = leerForo();
-    foroContador.textContent = `${publicaciones.length} publicada${publicaciones.length === 1 ? '' : 's'}`;
-    foroGrid.innerHTML = '';
-
-    if (publicaciones.length === 0) {
-      foroVacio.style.display = 'block';
-      return;
-    }
-    foroVacio.style.display = 'none';
-
-    publicaciones.slice().reverse().forEach((pub) => {
-      const card = document.createElement('article');
-      card.className = 'foro-card';
-      card.innerHTML = `
-        <div class="foro-card__imagen" style="background-image: url('${pub.src}');"></div>
-        <div class="foro-card__cuerpo">
-          <p class="foro-card__autor">${pub.autor}</p>
-          <p class="foro-card__fecha">${pub.fecha} — ${pub.imagenTitulo}</p>
-        </div>
-      `;
-      foroGrid.appendChild(card);
-    });
-  }
-
-  btnPublicar.addEventListener('click', () => {
-    if (!imagenSeleccionada) return;
-    const autor = inputAutor.value.trim() || 'Anónimo';
-
-    let srcParaForo = imagenSeleccionada.src;
-
-    if (editorIntervencion.hayDibujo()) {
-      try {
-        srcParaForo = editorIntervencion.exportarComoDataUrl();
-      } catch (err) {
-        console.warn('No se pudo exportar la intervención, se publica la imagen original:', err);
-      }
-    }
-
-    const publicaciones = leerForo();
-    publicaciones.push({
-      autor,
-      imagenTitulo: imagenSeleccionada.titulo,
-      src: srcParaForo,
-      fecha: new Date().toLocaleDateString('es-AR', { day: 'numeric', month: 'short', year: 'numeric' }),
-    });
-    guardarForo(publicaciones);
-    pintarForo();
-    inputAutor.value = '';
-    editorSeccion.classList.remove('visible');
-    document.getElementById('foro').scrollIntoView({ behavior: 'smooth' });
+  await guardarPublicacion({
+    autor,
+    imagenTitulo: imagenSeleccionada.titulo,
+    src: srcParaForo,
+    fecha: new Date().toLocaleDateString('es-AR', { day: 'numeric', month: 'short', year: 'numeric' }),
   });
 
-  pintarForo();
+  await pintarForo();
+  inputAutor.value = '';
+  editorSeccion.classList.remove('visible');
+  document.getElementById('foro').scrollIntoView({ behavior: 'smooth' });
+});
+
+pintarForo();
 </script>
 
 <script src="assets/js/scroll-reveal.js"></script>
