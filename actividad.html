@@ -267,6 +267,87 @@
     text-align: center;
     color: var(--hueso-op);
   }
+  /* ---------- Modal foro ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 9, 8, 0.92);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--r-3);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.modal-overlay.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-contenido {
+  position: relative;
+  max-width: min(90vw, 600px);
+  width: 100%;
+  background: var(--negro-2);
+  border: var(--borde-textura);
+}
+
+.modal-contenido img {
+  width: 100%;
+  display: block;
+}
+
+.modal-pie {
+  padding: var(--r-2);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.modal-pie__autor {
+  font-family: var(--f-subtitulo);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.modal-pie__fecha {
+  font-family: var(--f-subtitulo);
+  font-size: 0.72rem;
+  color: var(--hueso-op);
+}
+
+.modal-cerrar {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  background: var(--bordo);
+  border: none;
+  color: var(--hueso);
+  font-family: var(--f-subtitulo);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-cerrar:hover {
+  background: var(--bordo-claro);
+}
+
+.foro-card {
+  cursor: pointer;
+}
+
+.foro-card:hover .foro-card__imagen {
+  opacity: 0.85;
+}
 </style>
 </head>
 <body>
@@ -336,7 +417,16 @@
     </section>
 
   </div>
-
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-label="Intervención ampliada">
+  <div class="modal-contenido">
+    <button class="modal-cerrar" id="modal-cerrar">✕ cerrar</button>
+    <img id="modal-img" src="" alt="">
+    <div class="modal-pie">
+      <p class="modal-pie__autor" id="modal-autor"></p>
+      <p class="modal-pie__fecha" id="modal-fecha"></p>
+    </div>
+  </div>
+</div>
 </main>
 
 <script src="assets/js/editor-intervencion.js"></script>
@@ -435,18 +525,19 @@ async function pintarForo() {
   }
   foroVacio.style.display = 'none';
 
-  publicaciones.slice().reverse().forEach((pub) => {
-    const card = document.createElement('article');
-    card.className = 'foro-card';
-    card.innerHTML = `
-      <div class="foro-card__imagen" style="background-image: url('${pub.src}');"></div>
-      <div class="foro-card__cuerpo">
-        <p class="foro-card__autor">${pub.autor}</p>
-        <p class="foro-card__fecha">${pub.fecha} — ${pub.imagenTitulo}</p>
-      </div>
-    `;
-    foroGrid.appendChild(card);
-  });
+publicaciones.slice().reverse().forEach((pub) => {
+  const card = document.createElement('article');
+  card.className = 'foro-card';
+  card.innerHTML = `
+    <div class="foro-card__imagen" style="background-image: url('${pub.src}');"></div>
+    <div class="foro-card__cuerpo">
+      <p class="foro-card__autor">${pub.autor}</p>
+      <p class="foro-card__fecha">${pub.fecha} — ${pub.imagenTitulo}</p>
+    </div>
+  `;
+  card.addEventListener('click', () => abrirModal(pub));
+  foroGrid.appendChild(card);
+});
 }
 
 btnPublicar.addEventListener('click', async () => {
@@ -474,7 +565,35 @@ btnPublicar.addEventListener('click', async () => {
   editorSeccion.classList.remove('visible');
   document.getElementById('foro').scrollIntoView({ behavior: 'smooth' });
 });
+const modalOverlay = document.getElementById('modal-overlay');
+const modalImg     = document.getElementById('modal-img');
+const modalAutor   = document.getElementById('modal-autor');
+const modalFecha   = document.getElementById('modal-fecha');
+const modalCerrar  = document.getElementById('modal-cerrar');
 
+function abrirModal(pub) {
+  modalImg.src = pub.src;
+  modalImg.alt = `Intervención de ${pub.autor} sobre "${pub.imagenTitulo}"`;
+  modalAutor.textContent = pub.autor;
+  modalFecha.textContent = `${pub.fecha} — ${pub.imagenTitulo}`;
+  modalOverlay.classList.add('visible');
+  document.body.style.overflow = 'hidden';
+}
+
+function cerrarModal() {
+  modalOverlay.classList.remove('visible');
+  document.body.style.overflow = '';
+  modalImg.src = '';
+}
+
+modalCerrar.addEventListener('click', cerrarModal);
+modalOverlay.addEventListener('click', (e) => {
+  if (e.target === modalOverlay) cerrarModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') cerrarModal();
+});
+  
 pintarForo();
 </script>
 
