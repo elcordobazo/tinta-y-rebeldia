@@ -65,3 +65,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// ── PINES DE LUGARES PUNTUALES (touch) ──
+if (esTouch) {
+  const pines = document.querySelectorAll('.pin-lugar');
+  pines.forEach((pin) => {
+    pin.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const yaActivo = pin.classList.contains('activo');
+      pines.forEach((p) => p.classList.remove('activo'));
+      if (!yaActivo) pin.classList.add('activo');
+    });
+  });
+}

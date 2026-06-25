@@ -204,3 +204,35 @@
   .col-grupo.activo .col-ruta { stroke-dashoffset: 0 !important; opacity: 1 !important; }
   .col-grupo.activo .col-tag { opacity: 1; }
 }
+/* ── PINES DE LUGARES PUNTUALES ── */
+.pin-lugar {
+  cursor: default;
+}
+
+.pin-icono {
+  transition: transform 200ms ease, filter 200ms ease;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.pin-tag {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms ease;
+}
+
+.pin-lugar:hover .pin-tag,
+.pin-lugar:focus .pin-tag {
+  opacity: 1;
+}
+
+.pin-lugar:hover .pin-icono,
+.pin-lugar:focus .pin-icono {
+  transform: scale(1.3);
+  filter: drop-shadow(0 0 5px rgba(110, 20, 35, 0.6));
+}
+
+@media (hover: none) {
+  .pin-lugar.activo .pin-tag   { opacity: 1; }
+  .pin-lugar.activo .pin-icono { transform: scale(1.3); }
+}

@@ -402,14 +402,62 @@
     </g>
   </g>
 
-  <!-- PINES DE PUNTOS DE INTERÉS — fuera de los grupos, no reaccionan al hover -->
-  <g pointer-events="none">
-    <path fill="#6e1423" d="M596.47,461.94c-0.27-0.02-0.55-0.03-0.83-0.03c-0.28,0-0.55,0.01-0.83,0.03c-7.76,0.52-12.57,8.77-9.67,15.99l1.76,4.4l7.08,11.87c0.75,1.25,2.57,1.25,3.32,0l7.08-11.86l1.77-4.4c2.9-7.23-1.91-15.47-9.68-16z M595.64,480.09c-3.37,0-6.1-2.73-6.1-6.09s2.73-6.1,6.1-6.1s6.1,2.73,6.1,6.1S599.01,480.09,595.64,480.09z"/>
-    <path fill="#6e1423" d="M629.49,440.8c-0.27-0.02-0.55-0.03-0.83-0.03c-0.28,0-0.55,0.01-0.83,0.03c-7.76,0.52-12.57,8.77-9.67,15.99l1.76,4.4l7.08,11.87c0.75,1.25,2.57,1.25,3.32,0l7.08-11.86l1.77-4.4c2.9-7.23-1.91-15.47-9.68-16z M628.66,458.95c-3.37,0-6.1-2.73-6.1-6.09s2.73-6.1,6.1-6.1s6.1,2.73,6.1,6.1S632.03,458.95,628.66,458.95z"/>
-    <path fill="#6e1423" d="M429.66,272.67c-0.27-0.02-0.55-0.03-0.83-0.03c-0.28,0-0.55,0.01-0.83,0.03c-7.76,0.52-12.57,8.77-9.67,15.99l1.76,4.4l7.08,11.87c0.75,1.25,2.57,1.25,3.32,0l7.08-11.86l1.77-4.4c2.9-7.23-1.91-15.47-9.68-16z M428.83,290.82c-3.37,0-6.1-2.73-6.1-6.09s2.73-6.1,6.1-6.1s6.1,2.73,6.1,6.1S432.2,290.82,428.83,290.82z"/>
-    <path fill="#6e1423" d="M455.53,290.85c-0.27-0.02-0.55-0.03-0.83-0.03c-0.28,0-0.55,0.01-0.83,0.03c-7.76,0.52-12.57,8.77-9.67,15.99l1.76,4.4l7.08,11.87c0.75,1.25,2.57,1.25,3.32,0l7.08-11.86l1.77-4.4c2.9-7.23-1.91-15.47-9.68-16z M454.7,309c-3.37,0-6.1-2.73-6.1-6.09s2.73-6.1,6.1-6.1s6.1,2.73,6.1,6.1S458.07,309,454.7,309z"/>
-    <path fill="#6e1423" d="M262.51,206.63c-0.27-0.02-0.55-0.03-0.83-0.03c-0.28,0-0.55,0.01-0.83,0.03c-7.76,0.52-12.57,8.77-9.67,15.99l1.76,4.4l7.08,11.87c0.75,1.25,2.57,1.25,3.32,0l7.08-11.86l1.77-4.4c2.9-7.23-1.91-15.47-9.68-16z M261.68,224.78c-3.37,0-6.1-2.73-6.1-6.09s2.73-6.1,6.1-6.1s6.1,2.73,6.1,6.1S265.05,224.78,261.68,224.78z"/>
+<!--
+  REEMPLAZÁ el bloque de pines que ya tenés en tu SVG (el <g pointer-events="none">)
+  por este. Ahora cada pin tiene hover con su tag.
+  
+  Pegá esto DENTRO del <svg class="mapa-svg">, antes del cierre </svg>
+-->
+
+<!-- PINES DE PUNTOS DE INTERÉS — con hover individual -->
+
+<!-- PIN: SEDE CGT -->
+<g class="pin-lugar" aria-label="Sede CGT">
+  <path class="pin-icono" fill="#6e1423" d="M596.47,461.94c-0.27-0.02-0.55-0.03-0.83-0.03c-0.28,0-0.55,0.01-0.83,0.03c-7.76,0.52-12.57,8.77-9.67,15.99l1.76,4.4l7.08,11.87c0.75,1.25,2.57,1.25,3.32,0l7.08-11.86l1.77-4.4c2.9-7.23-1.91-15.47-9.68-16z M595.64,480.09c-3.37,0-6.1-2.73-6.1-6.09s2.73-6.1,6.1-6.1s6.1,2.73,6.1,6.1S599.01,480.09,595.64,480.09z"/>
+  <g class="pin-tag">
+    <rect rx="12" x="501.82" y="460.32" width="106.21" height="34.83" fill="#6e1423"/>
+    <text fill="#fff" font-family="var(--fuente-titulo, 'Rubik Dirt', sans-serif)" font-size="10px" text-anchor="middle" x="554.92" y="474">SEDE</text>
+    <text fill="#fff" font-family="var(--fuente-titulo, 'Rubik Dirt', sans-serif)" font-size="10px" text-anchor="middle" x="554.92" y="488">CGT</text>
   </g>
+</g>
+
+<!-- PIN: PLAZA COLÓN -->
+<g class="pin-lugar" aria-label="Plaza Colón">
+  <path class="pin-icono" fill="#6e1423" d="M429.66,272.67c-0.27-0.02-0.55-0.03-0.83-0.03c-0.28,0-0.55,0.01-0.83,0.03c-7.76,0.52-12.57,8.77-9.67,15.99l1.76,4.4l7.08,11.87c0.75,1.25,2.57,1.25,3.32,0l7.08-11.86l1.77-4.4c2.9-7.23-1.91-15.47-9.68-16z M428.83,290.82c-3.37,0-6.1-2.73-6.1-6.09s2.73-6.1,6.1-6.1s6.1,2.73,6.1,6.1S432.2,290.82,428.83,290.82z"/>
+  <g class="pin-tag">
+    <rect rx="12" x="333.98" y="271.84" width="106.21" height="34.83" fill="#6e1423"/>
+    <text fill="#fff" font-family="var(--fuente-titulo, 'Rubik Dirt', sans-serif)" font-size="10px" text-anchor="middle" x="387.08" y="285.5">PLAZA</text>
+    <text fill="#fff" font-family="var(--fuente-titulo, 'Rubik Dirt', sans-serif)" font-size="10px" text-anchor="middle" x="387.08" y="299.5">COLÓN</text>
+  </g>
+</g>
+
+<!-- PIN: HOSPITAL CLÍNICAS -->
+<g class="pin-lugar" aria-label="Hospital Clínicas">
+  <path class="pin-icono" fill="#6e1423" d="M262.51,206.63c-0.27-0.02-0.55-0.03-0.83-0.03c-0.28,0-0.55,0.01-0.83,0.03c-7.76,0.52-12.57,8.77-9.67,15.99l1.76,4.4l7.08,11.87c0.75,1.25,2.57,1.25,3.32,0l7.08-11.86l1.77-4.4c2.9-7.23-1.91-15.47-9.68-16z M261.68,224.78c-3.37,0-6.1-2.73-6.1-6.09s2.73-6.1,6.1-6.1s6.1,2.73,6.1,6.1S265.05,224.78,261.68,224.78z"/>
+  <g class="pin-tag">
+    <rect rx="12" x="250.33" y="205.69" width="106.21" height="34.83" fill="#6e1423"/>
+    <text fill="#fff" font-family="var(--fuente-titulo, 'Rubik Dirt', sans-serif)" font-size="10px" text-anchor="middle" x="303.43" y="219.5">HOSPITAL</text>
+    <text fill="#fff" font-family="var(--fuente-titulo, 'Rubik Dirt', sans-serif)" font-size="10px" text-anchor="middle" x="303.43" y="233.5">CLÍNICAS</text>
+  </g>
+</g>
+
+<!-- PIN: CABILDO -->
+<g class="pin-lugar" aria-label="Cabildo">
+  <path class="pin-icono" fill="#6e1423" d="M629.49,440.8c-0.27-0.02-0.55-0.03-0.83-0.03c-0.28,0-0.55,0.01-0.83,0.03c-7.76,0.52-12.57,8.77-9.67,15.99l1.76,4.4l7.08,11.87c0.75,1.25,2.57,1.25,3.32,0l7.08-11.86l1.77-4.4c2.9-7.23-1.91-15.47-9.68-16z M628.66,458.95c-3.37,0-6.1-2.73-6.1-6.09s2.73-6.1,6.1-6.1s6.1,2.73,6.1,6.1S632.03,458.95,628.66,458.95z"/>
+  <g class="pin-tag">
+    <rect rx="12" x="617.31" y="439.97" width="106.21" height="34.83" fill="#6e1423"/>
+    <text fill="#fff" font-family="var(--fuente-titulo, 'Rubik Dirt', sans-serif)" font-size="10px" text-anchor="middle" x="670.41" y="461">CABILDO</text>
+  </g>
+</g>
+
+<!-- PIN: CONFITERÍA -->
+<g class="pin-lugar" aria-label="Confitería">
+  <path class="pin-icono" fill="#6e1423" d="M455.53,290.85c-0.27-0.02-0.55-0.03-0.83-0.03c-0.28,0-0.55,0.01-0.83,0.03c-7.76,0.52-12.57,8.77-9.67,15.99l1.76,4.4l7.08,11.87c0.75,1.25,2.57,1.25,3.32,0l7.08-11.86l1.77-4.4c2.9-7.23-1.91-15.47-9.68-16z M454.7,309c-3.37,0-6.1-2.73-6.1-6.09s2.73-6.1,6.1-6.1s6.1,2.73,6.1,6.1S458.07,309,454.7,309z"/>
+  <g class="pin-tag">
+    <rect rx="12" x="443.35" y="290.02" width="106.21" height="34.83" fill="#6e1423"/>
+    <text fill="#fff" font-family="var(--fuente-titulo, 'Rubik Dirt', sans-serif)" font-size="10px" text-anchor="middle" x="496.45" y="311">CONFITERÍA</text>
+  </g>
+</g>
 
 </svg>
       </div>
